@@ -13,29 +13,36 @@
     "cta": "Try demo"
   },
   "hero": {
-    "title": "Auditable traceability for the food industry",
-    "subtitle": "Monitor every batch with transparent, verifiable compliance from farm to fork.",
-    "primary": "Try demo",
-    "secondary": "See how it works",
-    "alt": "FoodChain dashboard showing a traceability map"
+    "title": "Build trust across your entire food chain with verified seals in minutes",
+    "subtitle": "Validate batches with signed QR, stay audit-ready through a public blockchain ledger, and share verifiable evidence with customers and authorities.",
+    "primary": "Explore platform",
+    "secondary": "See live case",
+    "alt": "FoodChain dashboard with verified seals and blockchain traceability",
+    "primaryAria": "Open the guided FoodChain tour",
+    "secondaryAria": "View a live FoodChain case study",
+    "bullets": {
+      "item1": "Certificates ready in 48h",
+      "item2": "Instant alerts on deviations",
+      "item3": "Audits without spreadsheets"
+    }
   },
   "header": {
     "login": "Sign in"
   },
   "sections": {
     "problem": {
-      "title": "The challenge",
-      "description": "Food manufacturers face growing risks that erode trust and margins.",
+      "title": "The problem",
+      "description": "The food industry faces risks across traceability, safety, and regulatory compliance. Lack of transparency erodes trust and complicates crisis management.",
       "item1": "Food fraud",
       "item2": "Product recalls",
-      "item3": "Tamper-prone labels",
+      "item3": "Counterfeitable labels",
       "item4": "Fragmented data"
     },
     "solution": {
       "title": "Our solution",
-      "description": "FoodChain links every event with real-time, verifiable evidence accessible to every stakeholder.",
+      "description": "FoodChain logs every step of the chain with real-time verifiable evidence. Blockchain guarantees immutability and signed QR codes prevent fraud, delivering fast, trustworthy audits.",
       "card1": {
-        "title": "Blockchain & immutability",
+        "title": "Blockchain/Immutability",
         "alt": "Diagram showing connected blockchain nodes"
       },
       "card2": {
@@ -47,7 +54,7 @@
         "alt": "Customer verifying product information on a phone"
       },
       "card4": {
-        "title": "Rapid auditing",
+        "title": "Rapid audit",
         "alt": "Digital audit dashboard on a tablet"
       }
     },
@@ -64,7 +71,7 @@
       },
       "item3": {
         "value": "99.9%",
-        "label": "Platform uptime",
+        "label": "Availability",
         "delta": "+0.5%"
       }
     },
@@ -235,7 +242,7 @@
       "title": "Plans & pricing",
       "basic": {
         "name": "Basic",
-        "amount": "$99",
+  "amount": "S/ 99",
         "period": "/month",
         "feature1": "Core traceability",
         "feature2": "Up to 1,000 products",
@@ -246,7 +253,7 @@
         "badge": "Recommended",
         "badgeAria": "Recommended plan",
         "name": "Professional",
-        "amount": "$299",
+  "amount": "S/ 299",
         "period": "/month",
         "feature1": "Advanced traceability",
         "feature2": "Up to 10,000 products",

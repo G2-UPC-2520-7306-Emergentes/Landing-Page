@@ -13,47 +13,54 @@
     "cta": "Probar demo"
   },
   "hero": {
-    "title": "Trazabilidad auditable para la industria alimentaria",
-    "subtitle": "Controla cada lote con transparencia total y cumplimiento verificable en minutos.",
-    "primary": "Probar demo",
-    "secondary": "Ver cómo funciona",
-    "alt": "Panel de FoodChain mostrando un mapa de trazabilidad"
+    "title": "Crea confianza en cada etapa de tu cadena alimentaria con sellos verificados en minutos",
+    "subtitle": "Valida lotes con QR firmado, opera con auditorías listas en blockchain pública y comparte evidencia verificable con clientes y autoridades.",
+    "primary": "Explorar plataforma",
+    "secondary": "Ver caso en vivo",
+    "alt": "Panel de FoodChain con sellos verificados y trazabilidad blockchain",
+    "primaryAria": "Abrir el recorrido guiado de FoodChain",
+    "secondaryAria": "Ver un caso en vivo de FoodChain",
+    "bullets": {
+      "item1": "Certificados listos en 48 hs",
+      "item2": "Alertas inmediatas ante desvíos",
+      "item3": "Auditorías sin hojas de cálculo"
+    }
   },
   "header": {
     "login": "Iniciar sesión"
   },
   "sections": {
     "problem": {
-      "title": "El desafío",
-      "description": "Los fabricantes de alimentos enfrentan riesgos crecientes que erosionan la confianza y los márgenes.",
+      "title": "El problema",
+      "description": "La industria alimentaria enfrenta riesgos en trazabilidad, seguridad y cumplimiento normativo. La falta de transparencia genera desconfianza y dificulta la gestión de crisis.",
       "item1": "Fraude alimentario",
       "item2": "Retiros de productos",
-      "item3": "Etiquetas fáciles de adulterar",
+      "item3": "Etiquetas falsificables",
       "item4": "Datos fragmentados"
     },
     "solution": {
       "title": "Nuestra solución",
-      "description": "FoodChain conecta cada evento con evidencia verificable en tiempo real, accesible para todos los actores.",
+      "description": "FoodChain registra cada paso de la cadena con evidencia verificable en tiempo real. Con blockchain garantizamos inmutabilidad y con QR firmado prevenimos el fraude, ofreciendo auditorías rápidas y confiables.",
       "card1": {
-        "title": "Blockchain e inmutabilidad",
-        "alt": "Diagrama que muestra nodos de blockchain conectados"
+        "title": "Blockchain/Inmutabilidad",
+        "alt": "Red de nodos blockchain interconectados"
       },
       "card2": {
         "title": "QR por lote",
-        "alt": "Código QR impreso en el empaque de un producto"
+        "alt": "Código QR seguro impreso en empaque"
       },
       "card3": {
         "title": "Verificación pública",
-        "alt": "Cliente verificando información del producto en un teléfono"
+        "alt": "Persona verificando datos del producto desde el móvil"
       },
       "card4": {
-        "title": "Auditoría ágil",
-        "alt": "Panel digital de auditoría en una tableta"
+        "title": "Auditoría rápida",
+        "alt": "Panel de auditoría digital con métricas"
       }
     },
     "kpis": {
       "item1": {
-        "value": "1.000+",
+        "value": "+1000",
         "label": "Empresas",
         "delta": "+20%"
       },
@@ -64,7 +71,7 @@
       },
       "item3": {
         "value": "99,9%",
-        "label": "Disponibilidad de la plataforma",
+        "label": "Disponibilidad",
         "delta": "+0,5%"
       }
     },
@@ -235,7 +242,7 @@
       "title": "Planes y precios",
       "basic": {
         "name": "Básico",
-        "amount": "$99",
+  "amount": "S/ 99",
         "period": "/mes",
         "feature1": "Trazabilidad básica",
         "feature2": "Hasta 1000 productos",
@@ -246,7 +253,7 @@
         "badge": "Recomendado",
         "badgeAria": "Plan recomendado",
         "name": "Profesional",
-        "amount": "$299",
+  "amount": "S/ 299",
         "period": "/mes",
         "feature1": "Trazabilidad avanzada",
         "feature2": "Hasta 10,000 productos",
