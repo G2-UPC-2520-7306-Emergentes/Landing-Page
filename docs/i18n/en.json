@@ -1,0 +1,346 @@
+{
+  "meta": {
+    "title": "FoodChain | Auditable Traceability for the Food Industry",
+    "description": "Ensure safety and transparency in your supply chain with FoodChain. Real-time traceability, regulatory compliance, and efficient collaboration."
+  },
+  "nav": {
+    "home": "Home",
+    "solution": "Solution",
+    "stages": "Stages",
+    "benefits": "Benefits",
+    "segments": "Segments",
+    "contact": "Contact",
+    "cta": "Try demo"
+  },
+  "hero": {
+    "title": "Auditable traceability for the food industry",
+    "subtitle": "Monitor every batch with transparent, verifiable compliance from farm to fork.",
+    "primary": "Try demo",
+    "secondary": "See how it works",
+    "alt": "FoodChain dashboard showing a traceability map"
+  },
+  "header": {
+    "login": "Sign in"
+  },
+  "sections": {
+    "problem": {
+      "title": "The challenge",
+      "description": "Food manufacturers face growing risks that erode trust and margins.",
+      "item1": "Food fraud",
+      "item2": "Product recalls",
+      "item3": "Tamper-prone labels",
+      "item4": "Fragmented data"
+    },
+    "solution": {
+      "title": "Our solution",
+      "description": "FoodChain links every event with real-time, verifiable evidence accessible to every stakeholder.",
+      "card1": {
+        "title": "Blockchain & immutability",
+        "alt": "Diagram showing connected blockchain nodes"
+      },
+      "card2": {
+        "title": "QR per batch",
+        "alt": "QR code printed on product packaging"
+      },
+      "card3": {
+        "title": "Public verification",
+        "alt": "Customer verifying product information on a phone"
+      },
+      "card4": {
+        "title": "Rapid auditing",
+        "alt": "Digital audit dashboard on a tablet"
+      }
+    },
+    "kpis": {
+      "item1": {
+        "value": "1,000+",
+        "label": "Companies",
+        "delta": "+20%"
+      },
+      "item2": {
+        "value": "50%",
+        "label": "Incident reduction",
+        "delta": "+15%"
+      },
+      "item3": {
+        "value": "99.9%",
+        "label": "Platform uptime",
+        "delta": "+0.5%"
+      }
+    },
+    "chain": {
+      "title": "Supply chain stages",
+      "stage1": {
+        "title": "Origin",
+        "description": "Capture data at the farm or producer.",
+        "alt": "Farmer recording crop data at a farm"
+      },
+      "stage2": {
+        "title": "Processing",
+        "description": "Monitor transformation in real time.",
+        "alt": "Food processing line under supervision"
+      },
+      "stage3": {
+        "title": "Distribution",
+        "description": "Control logistics and the cold chain.",
+        "alt": "Temperature-monitored distribution truck"
+      },
+      "stage4": {
+        "title": "Retail",
+        "description": "Share product information with consumers.",
+        "alt": "Customer reviewing product information in store"
+      }
+    },
+    "trust": {
+      "title": "Trusted by industry leaders",
+      "card1": {
+        "quote": "“With FoodChain we trace every batch in minutes and audit without disruption.”",
+        "cite": "Ana García — Quality Director",
+        "alt": "Portrait of a quality director"
+      },
+      "card2": {
+        "quote": "“The transparency we give distributors and customers elevated our reputation.”",
+        "cite": "Carlos Rodríguez — Operations Manager",
+        "alt": "Portrait of an operations manager"
+      }
+    },
+    "benefits": {
+      "title": "Key benefits",
+      "row1": {
+        "title": "Total transparency",
+        "description": "Access detailed information at every stage of the chain.",
+        "alt": "Traceability dashboard with analytics"
+      },
+      "row2": {
+        "title": "Regulatory compliance",
+        "description": "Stay aligned with local and international regulations.",
+        "alt": "Inspectors reviewing digital documentation"
+      },
+      "row3": {
+        "title": "Risk reduction",
+        "description": "Quickly identify deviations and affected batches.",
+        "alt": "Operator monitoring alerts on a dashboard"
+      },
+      "row4": {
+        "title": "Consumer trust",
+        "description": "Offer verifiable information for every purchase.",
+        "alt": "Shopper scanning a QR code in store"
+      }
+    },
+    "segments": {
+      "title": "Target segments",
+      "tabsLabel": "Target segments",
+      "tab1": "Producers",
+      "tab2": "Enterprises/Retailers",
+      "tab3": "Consumers",
+      "panel1": {
+        "list1": "Digital, export-ready certificates of origin.",
+        "list2": "Early alerts for sanitary or climate risks.",
+        "list3": "Integration with ERPs and in-field sensors.",
+        "testimonial": "“We now prove batch traceability without paperwork.”",
+        "cta": "Contact us"
+      },
+      "panel2": {
+        "list1": "Unified dashboard for batches, suppliers, and audits.",
+        "list2": "Automated regulatory and quality reports.",
+        "list3": "24/7 monitoring SLA with expert support.",
+        "testimonial": "“We cut each audit down to under an hour.”",
+        "cta": "Talk to sales"
+      },
+      "panel3": {
+        "list1": "Instant verification through on-pack QR codes.",
+        "list2": "Transparent nutrition facts and trust seals.",
+        "list3": "Personalized alerts about recalls or batch changes.",
+        "testimonial": "“We trust the brand because we see the entire journey.”",
+        "cta": "Contact us"
+      }
+    },
+    "usecase": {
+      "title": "Use case",
+      "step1": {
+        "title": "Certified origin",
+        "description": "A coffee producer logs cultivation, harvest, and processing data.",
+        "aria": "Certified origin — A coffee producer logs cultivation, harvest, and processing data."
+      },
+      "step2": {
+        "title": "Transparent processing",
+        "description": "Every transformation stage is recorded with quality checks.",
+        "aria": "Transparent processing — Every transformation stage is recorded with quality checks."
+      },
+      "step3": {
+        "title": "Controlled logistics",
+        "description": "Temperature and location are tracked throughout transport.",
+        "aria": "Controlled logistics — Temperature and location are tracked throughout transport."
+      },
+      "step4": {
+        "title": "Informed consumer",
+        "description": "Shoppers scan a QR code to view the product journey end to end.",
+        "aria": "Informed consumer — Shoppers scan a QR code to view the product journey end to end."
+      }
+    },
+    "featured": {
+      "title": "Featured features",
+      "card1": {
+        "title": "QR labeling",
+        "description": "Assign QR labels so stakeholders can access product data instantly."
+      },
+      "card2": {
+        "title": "GPS & blockchain",
+        "description": "Real-time tracking with immutable blockchain records."
+      },
+      "card3": {
+        "title": "Consumer verification",
+        "description": "Allow consumers to verify authenticity and origin on demand."
+      },
+      "card4": {
+        "title": "Analytics dashboard",
+        "description": "Visualize key metrics and trends across your supply chain."
+      }
+    },
+    "capabilities": {
+      "title": "Detailed capabilities",
+      "navLabel": "Capabilities",
+      "chip1": "End-to-end traceability",
+      "chip2": "Real-time alerts",
+      "chip3": "Systems integration",
+      "chip4": "Custom reports",
+      "chip5": "Open API",
+      "chip6": "Technical support",
+      "detail1": {
+        "title": "End-to-end traceability",
+        "description": "Follow every lot from origin to the final customer with verifiable evidence."
+      },
+      "detail2": {
+        "title": "Real-time alerts",
+        "description": "Receive instant notifications when thresholds or procedures are breached."
+      },
+      "detail3": {
+        "title": "Systems integration",
+        "description": "Connect with ERP, CRM, and sensor networks already in place."
+      },
+      "detail4": {
+        "title": "Custom reports",
+        "description": "Generate role-based reports tailored to regulators and partners."
+      },
+      "detail5": {
+        "title": "Open API",
+        "description": "Use an extensible API for custom apps and workflows."
+      },
+      "detail6": {
+        "title": "Technical support",
+        "description": "Rely on specialists for onboarding, training, and continuous support."
+      }
+    },
+    "pricing": {
+      "title": "Plans & pricing",
+      "basic": {
+        "name": "Basic",
+        "amount": "$99",
+        "period": "/month",
+        "feature1": "Core traceability",
+        "feature2": "Up to 1,000 products",
+        "feature3": "Standard support",
+        "cta": "Select"
+      },
+      "pro": {
+        "badge": "Recommended",
+        "badgeAria": "Recommended plan",
+        "name": "Professional",
+        "amount": "$299",
+        "period": "/month",
+        "feature1": "Advanced traceability",
+        "feature2": "Up to 10,000 products",
+        "feature3": "Custom alerts",
+        "feature4": "Priority support",
+        "cta": "Select"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "amount": "Contact us",
+        "feature1": "Complete traceability",
+        "feature2": "Unlimited products",
+        "feature3": "Custom integrations",
+        "feature4": "Dedicated support",
+        "cta": "Contact us"
+      }
+    },
+    "lead": {
+      "title": "Our promise",
+      "subtitle": "At FoodChain, we believe in transparency and food safety. We support your team at every stage to ensure auditable, collaborative processes.",
+      "feedback": "Thanks! We'll reach out soon.",
+      "fields": {
+        "email": {
+          "label": "Email",
+          "placeholder": "you@company.com"
+        },
+        "name": {
+          "label": "Name",
+          "placeholder": "Full name"
+        },
+        "company": {
+          "label": "Company",
+          "placeholder": "Company name"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "+1 555 123 4567"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Tell us about your project"
+        },
+        "captcha": {
+          "label": "Captcha",
+          "placeholder": "Type the code"
+        },
+        "honeypot": {
+          "label": "Website"
+        }
+      },
+      "submit": "Send message"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "item1": {
+        "question": "What is FoodChain?",
+        "answer": "FoodChain is a platform that digitizes and secures end-to-end traceability for the food industry."
+      },
+      "item2": {
+        "question": "How does the integration work?",
+        "answer": "We connect to your existing systems through secure APIs and ready-made modules for ERP, CRM, and field sensors."
+      },
+      "item3": {
+        "question": "What type of support do you offer?",
+        "answer": "We provide 24/7 specialized support, tailored training, and guidance for audits and launches."
+      }
+    }
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "resources": "Segments",
+    "contact": "Contact",
+    "blog": "Blog",
+    "help": "Help Center",
+    "copy": "© 2025 FoodChain. All rights reserved.",
+    "whatsapp": "WhatsApp — chat with us"
+  },
+  "form": {
+    "fields": {
+      "success": "Submitted (demo)!"
+    },
+    "errors": {
+      "required": "This field is required.",
+      "email": "Enter a valid email address.",
+      "phone": "Enter a valid phone number.",
+      "captcha": "Complete the captcha.",
+      "captchaShort": "Enter a valid captcha value."
+    }
+  },
+  "fab": {
+    "whatsapp": {
+      "aria": "Chat on WhatsApp",
+      "href": "https://wa.me/XXXXXXXXXXX?text=Hello%20FoodChain%2C%20I%27d%20like%20a%20demo"
+    }
+  }
+}
