@@ -15,9 +15,20 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html.theme-preload *,
+html.theme-preload *::before,
+html.theme-preload *::after {
+  transition: none !important;
+}
+
+html.theme-transition-ready body,
+html.theme-transition-ready body::before,
+html.theme-transition-ready body::after {
+  transition: background-color 0.32s ease, color 0.32s ease, opacity 0.45s ease;
 }
 
 /* DOTTED BACKGROUND */
@@ -86,6 +97,7 @@ button, input, select, textarea {
   --muted: #718096;
   --border: #e2e8f0;
   --shadow: 0px 4px 16px rgba(157, 157, 184, 0.08), 0px 8px 24px rgba(157, 157, 184, 0.08);
+  --section-divider: rgba(148, 163, 184, 0.24);
 }
 
 html.theme-dark {
@@ -97,6 +109,7 @@ html.theme-dark {
   --muted: #718096;
   --border: #2d3748;
   --shadow: 0px 4px 16px rgba(0, 0, 0, 0.1), 0px 8px 24px rgba(0, 0, 0, 0.1);
+  --section-divider: rgba(59, 72, 95, 0.42);
 }
 
 /* UTILITIES */

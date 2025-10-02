@@ -1,353 +1,228 @@
 {
-  "meta": {
-    "title": "FoodChain | Trazabilidad Auditable para la Industria Alimentaria",
-    "description": "Garantiza la seguridad y transparencia en tu cadena de suministro con FoodChain. Trazabilidad en tiempo real, cumplimiento normativo y colaboración eficiente."
-  },
-  "nav": {
-    "home": "Inicio",
-    "solution": "Solución",
-    "stages": "Etapas",
-    "benefits": "Beneficios",
-    "segments": "Segmentos",
-    "contact": "Contacto",
-    "cta": "Probar demo"
-  },
-  "hero": {
-    "title": "Crea confianza en cada etapa de tu cadena alimentaria con sellos verificados en minutos",
-    "subtitle": "Valida lotes con QR firmado, opera con auditorías listas en blockchain pública y comparte evidencia verificable con clientes y autoridades.",
-    "primary": "Explorar plataforma",
-    "secondary": "Ver caso en vivo",
-    "alt": "Panel de FoodChain con sellos verificados y trazabilidad blockchain",
-    "primaryAria": "Abrir el recorrido guiado de FoodChain",
-    "secondaryAria": "Ver un caso en vivo de FoodChain",
-    "bullets": {
-      "item1": "Certificados listos en 48 hs",
-      "item2": "Alertas inmediatas ante desvíos",
-      "item3": "Auditorías sin hojas de cálculo"
-    }
-  },
-  "header": {
-    "login": "Iniciar sesión"
-  },
-  "sections": {
-    "problem": {
-      "title": "El problema",
-      "description": "La industria alimentaria enfrenta riesgos en trazabilidad, seguridad y cumplimiento normativo. La falta de transparencia genera desconfianza y dificulta la gestión de crisis.",
-      "item1": "Fraude alimentario",
-      "item2": "Retiros de productos",
-      "item3": "Etiquetas falsificables",
-      "item4": "Datos fragmentados"
-    },
-    "solution": {
-      "title": "Nuestra solución",
-      "description": "FoodChain registra cada paso de la cadena con evidencia verificable en tiempo real. Con blockchain garantizamos inmutabilidad y con QR firmado prevenimos el fraude, ofreciendo auditorías rápidas y confiables.",
-      "card1": {
-        "title": "Blockchain/Inmutabilidad",
-        "alt": "Red de nodos blockchain interconectados"
-      },
-      "card2": {
-        "title": "QR por lote",
-        "alt": "Código QR seguro impreso en empaque"
-      },
-      "card3": {
-        "title": "Verificación pública",
-        "alt": "Persona verificando datos del producto desde el móvil"
-      },
-      "card4": {
-        "title": "Auditoría rápida",
-        "alt": "Panel de auditoría digital con métricas"
-      }
-    },
-    "kpis": {
-      "item1": {
-        "value": "+1000",
-        "label": "Empresas",
-        "delta": "+20%"
-      },
-      "item2": {
-        "value": "50%",
-        "label": "Reducción de incidencias",
-        "delta": "+15%"
-      },
-      "item3": {
-        "value": "99,9%",
-        "label": "Disponibilidad",
-        "delta": "+0,5%"
-      }
-    },
-    "chain": {
-      "title": "Etapas de la cadena",
-      "stage1": {
-        "title": "Origen",
-        "description": "Captura de datos en la granja o productor.",
-        "alt": "Agricultor registrando datos del cultivo en una granja"
-      },
-      "stage2": {
-        "title": "Procesamiento",
-        "description": "Monitoreo de la transformación en tiempo real.",
-        "alt": "Línea de procesamiento de alimentos bajo supervisión"
-      },
-      "stage3": {
-        "title": "Distribución",
-        "description": "Control de la logística y la cadena de frío.",
-        "alt": "Camión de distribución con temperatura controlada"
-      },
-      "stage4": {
-        "title": "Venta",
-        "description": "Comparte la información del producto con los consumidores.",
-        "alt": "Cliente revisando información del producto en tienda"
-      }
-    },
-    "trust": {
-      "title": "La industria confía en nosotros",
-      "card1": {
-        "quote": "“Con FoodChain rastreamos cada lote en minutos y auditamos sin interrupciones.”",
-        "cite": "Ana García — Directora de Calidad",
-        "alt": "Retrato de una directora de calidad"
-      },
-      "card2": {
-        "quote": "“La transparencia que brindamos a distribuidores y clientes elevó nuestra reputación.”",
-        "cite": "Carlos Rodríguez — Gerente de Operaciones",
-        "alt": "Retrato de un gerente de operaciones"
-      }
-    },
-    "benefits": {
-      "title": "Beneficios clave",
-      "row1": {
-        "title": "Transparencia total",
-        "description": "Acceso a información detallada en cada etapa de la cadena.",
-        "alt": "Panel de trazabilidad con analíticas"
-      },
-      "row2": {
-        "title": "Cumplimiento normativo",
-        "description": "Permanece alineado a las regulaciones locales e internacionales.",
-        "alt": "Inspectores revisando documentación digital"
-      },
-      "row3": {
-        "title": "Reducción de riesgos",
-        "description": "Identifica rápidamente desviaciones y lotes afectados.",
-        "alt": "Operador monitoreando alertas en un panel"
-      },
-      "row4": {
-        "title": "Confianza del consumidor",
-        "description": "Ofrece información verificable para cada compra.",
-        "alt": "Cliente escaneando un código QR en tienda"
-      }
-    },
-    "segments": {
-      "title": "Segmentos objetivo",
-      "tabsLabel": "Segmentos objetivo",
-      "tab1": "Productores",
-      "tab2": "Empresas/Retailers",
-      "tab3": "Consumidores",
-      "panel1": {
-        "list1": "Certificados digitales de origen listos para exportar.",
-        "list2": "Alertas tempranas ante riesgos sanitarios o climáticos.",
-        "list3": "Integración con ERPs y sensores en campo.",
-        "testimonial": "“Ahora demostramos la trazabilidad de cada lote sin papeleo.”",
-        "cta": "Contactar"
-      },
-      "panel2": {
-        "list1": "Panel unificado para lotes, proveedores y auditorías.",
-        "list2": "Automatización de reportes regulatorios y de calidad.",
-        "list3": "SLA con monitoreo 24/7 y soporte experto.",
-        "testimonial": "“Reducimos el tiempo de cada auditoría a menos de una hora.”",
-        "cta": "Hablar con ventas"
-      },
-      "panel3": {
-        "list1": "Verificación instantánea mediante códigos QR en el empaque.",
-        "list2": "Ficha nutricional transparente y sellos de confianza.",
-        "list3": "Alertas personalizadas sobre retiros o cambios de lote.",
-        "testimonial": "“Confiamos en la marca porque vemos el recorrido completo.”",
-        "cta": "Contactar"
-      }
-    },
-    "usecase": {
-      "title": "Caso de uso",
-      "step1": {
-        "title": "Origen certificado",
-        "description": "Un productor de café registra datos de cultivo, cosecha y procesamiento.",
-        "aria": "Origen certificado — Un productor de café registra datos de cultivo, cosecha y procesamiento."
-      },
-      "step2": {
-        "title": "Proceso transparente",
-        "description": "Cada etapa de transformación se registra junto a los controles de calidad.",
-        "aria": "Proceso transparente — Cada etapa de transformación se registra junto a los controles de calidad."
-      },
-      "step3": {
-        "title": "Logística controlada",
-        "description": "Se monitorean temperatura y ubicación durante todo el transporte.",
-        "aria": "Logística controlada — Se monitorean temperatura y ubicación durante todo el transporte."
-      },
-      "step4": {
-        "title": "Consumidor informado",
-        "description": "El consumidor escanea un QR y visualiza el recorrido completo del producto.",
-        "aria": "Consumidor informado — El consumidor escanea un QR y visualiza el recorrido completo del producto."
-      }
-    },
-    "featured": {
-      "title": "Funcionalidades destacadas",
-      "card1": {
-        "title": "Etiquetado con QR",
-        "description": "Asigna etiquetas QR para que los actores accedan al instante a la información del producto."
-      },
-      "card2": {
-        "title": "GPS y blockchain",
-        "description": "Seguimiento en tiempo real con registros inmutables en blockchain."
-      },
-      "card3": {
-        "title": "Verificación para consumidores",
-        "description": "Permite que los consumidores verifiquen autenticidad y origen al instante."
-      },
-      "card4": {
-        "title": "Dashboard analítico",
-        "description": "Visualiza métricas clave y tendencias en tu cadena de suministro."
-      }
-    },
-    "capabilities": {
-      "title": "Características detalladas",
-      "navLabel": "Características",
-      "chip1": "Trazabilidad de extremo a extremo",
-      "chip2": "Alertas en tiempo real",
-      "chip3": "Integración con sistemas",
-      "chip4": "Reportes personalizados",
-      "chip5": "API abierta",
-      "chip6": "Soporte técnico",
-      "detail1": {
-        "title": "Trazabilidad de extremo a extremo",
-        "description": "Sigue cada lote desde el origen hasta el cliente final con evidencia verificable."
-      },
-      "detail2": {
-        "title": "Alertas en tiempo real",
-        "description": "Recibe notificaciones instantáneas cuando se superan umbrales o procedimientos."
-      },
-      "detail3": {
-        "title": "Integración con sistemas",
-        "description": "Conecta ERP, CRM y redes de sensores ya instaladas."
-      },
-      "detail4": {
-        "title": "Reportes personalizados",
-        "description": "Genera reportes por rol para reguladores y socios."
-      },
-      "detail5": {
-        "title": "API abierta",
-        "description": "Usa una API extensible para aplicaciones y flujos personalizados."
-      },
-      "detail6": {
-        "title": "Soporte técnico",
-        "description": "Cuenta con especialistas para onboarding, capacitación y soporte continuo."
-      }
-    },
-    "pricing": {
-      "title": "Planes y precios",
-      "basic": {
-        "name": "Básico",
-  "amount": "S/ 99",
-        "period": "/mes",
-        "feature1": "Trazabilidad básica",
-        "feature2": "Hasta 1000 productos",
-        "feature3": "Soporte estándar",
-        "cta": "Seleccionar"
-      },
-      "pro": {
-        "badge": "Recomendado",
-        "badgeAria": "Plan recomendado",
-        "name": "Profesional",
-  "amount": "S/ 299",
-        "period": "/mes",
-        "feature1": "Trazabilidad avanzada",
-        "feature2": "Hasta 10,000 productos",
-        "feature3": "Alertas personalizadas",
-        "feature4": "Soporte prioritario",
-        "cta": "Seleccionar"
-      },
-      "enterprise": {
-        "name": "Empresarial",
-        "amount": "Contactar",
-        "feature1": "Trazabilidad completa",
-        "feature2": "Productos ilimitados",
-        "feature3": "Integraciones personalizadas",
-        "feature4": "Soporte dedicado",
-        "cta": "Contactar"
-      }
-    },
-    "lead": {
-      "title": "Nuestra promesa",
-      "subtitle": "En FoodChain, creemos en la transparencia y la seguridad alimentaria. Acompañamos a tu equipo en cada etapa para asegurar procesos auditables y colaborativos.",
-      "feedback": "Gracias, te contactaremos pronto.",
-      "fields": {
-        "email": {
-          "label": "Correo electrónico",
-          "placeholder": "tu@empresa.com"
-        },
-        "name": {
-          "label": "Nombre",
-          "placeholder": "Nombre completo"
-        },
-        "company": {
-          "label": "Empresa",
-          "placeholder": "Nombre de la empresa"
-        },
-        "phone": {
-          "label": "Teléfono",
-          "placeholder": "+34 600 000 000"
-        },
-        "message": {
-          "label": "Mensaje",
-          "placeholder": "Cuéntanos sobre tu proyecto"
-        },
-        "captcha": {
-          "label": "Captcha",
-          "placeholder": "Escribe el código"
-        },
-        "honeypot": {
-          "label": "Sitio web"
-        }
-      },
-      "submit": "Enviar"
-    },
-    "faq": {
-      "title": "Preguntas frecuentes",
-      "item1": {
-        "question": "¿Qué es FoodChain?",
-        "answer": "FoodChain es una plataforma que digitaliza y asegura la trazabilidad de extremo a extremo para la industria alimentaria."
-      },
-      "item2": {
-        "question": "¿Cómo funciona la integración?",
-        "answer": "Nos conectamos con tus sistemas existentes mediante API seguras y módulos listos para ERP, CRM y sensores en campo."
-      },
-      "item3": {
-        "question": "¿Qué tipo de soporte ofrecen?",
-        "answer": "Ofrecemos soporte especializado 24/7, formación a medida y acompañamiento en auditorías y lanzamientos."
-      }
-    }
-  },
-  "footer": {
-    "privacy": "Privacidad",
-    "terms": "Términos",
-    "resources": "Segmentos",
-    "contact": "Contacto",
-    "blog": "Blog",
-    "help": "Centro de ayuda",
-    "copy": "© 2025 FoodChain. Todos los derechos reservados.",
-    "whatsapp": "WhatsApp — chatea con nosotros"
-  },
-  "form": {
-    "fields": {
-      "success": "¡Enviado (demo)!"
-    },
-    "errors": {
-      "required": "Este campo es obligatorio.",
-      "email": "Ingresa un correo electrónico válido.",
-      "phone": "Ingresa un teléfono válido.",
-      "captcha": "Completa el captcha.",
-      "captchaShort": "Ingresa un valor válido en el captcha."
-    }
-  },
-  "fab": {
-    "whatsapp": {
-      "aria": "Chatear por WhatsApp",
-      "href": "https://wa.me/XXXXXXXXXXX?text=Hola%20FoodChain,%20quiero%20una%20demo"
-    }
-  }
+    "meta.title": "FoodChain | Trazabilidad Auditable para la Industria Alimentaria",
+    "meta.description": "Garantice la seguridad y la transparencia en su cadena de suministro con FoodChain. Trazabilidad en tiempo real, cumplimiento normativo y colaboración eficiente.",
+    "nav.home": "Inicio",
+    "nav.solution": "Solución",
+    "nav.stages": "Etapas",
+    "nav.benefits": "Beneficios",
+    "nav.segments": "Segmentos",
+    "nav.contact": "Contacto",
+    "nav.cta": "Probar demo",
+    "header.login": "Iniciar sesión",
+    "hero.title": "Crea confianza en cada etapa de tu cadena alimentaria con sellos verificados en minutos",
+    "hero.subtitle": "Valida lotes con QR firmado, opera con auditorías listas en blockchain pública y comparte evidencia verificable con clientes y autoridades.",
+    "hero.bullets.item1": "Certificados listos en 48 hs",
+    "hero.bullets.item2": "Alertas inmediatas ante desvíos",
+    "hero.bullets.item3": "Auditorías sin hojas de cálculo",
+    "hero.primary": "Explorar plataforma",
+    "hero.primaryAria": "Abrir el recorrido guiado de FoodChain",
+    "hero.secondary": "Ver caso en vivo",
+    "hero.secondaryAria": "Ver un caso en vivo de FoodChain",
+    "sections.problem.title": "El problema",
+    "sections.problem.description": "La industria alimentaria enfrenta riesgos en trazabilidad, seguridad y cumplimiento normativo. La falta de transparencia genera desconfianza y dificulta la gestión de crisis.",
+    "sections.problem.item1": "Fraude alimentario",
+    "sections.problem.item2": "Retiros de productos",
+    "sections.problem.item3": "Etiquetas falsificables",
+    "sections.problem.item4": "Datos fragmentados",
+    "sections.solution.title": "Nuestra solución",
+    "sections.solution.description": "FoodChain registra cada paso de la cadena con evidencia verificable en tiempo real. Con blockchain garantizamos inmutabilidad y con QR firmado prevenimos el fraude, ofreciendo auditorías rápidas y confiables.",
+    "sections.solution.card1.title": "Blockchain/Inmutabilidad",
+    "sections.solution.card1.alt": "Red de nodos blockchain interconectados",
+    "sections.solution.card2.title": "QR por lote",
+    "sections.solution.card2.alt": "Código QR seguro impreso en empaque",
+    "sections.solution.card3.title": "Verificación pública",
+    "sections.solution.card3.alt": "Persona verificando datos del producto desde el móvil",
+    "sections.solution.card4.title": "Auditoría rápida",
+    "sections.solution.card4.alt": "Panel de auditoría digital con métricas",
+    "sections.kpis.item1.value": "+1000",
+    "sections.kpis.item1.label": "Empresas",
+    "sections.kpis.item2.value": "50%",
+    "sections.kpis.item2.label": "Reducción de incidencias",
+    "sections.kpis.item3.value": "99.9%",
+    "sections.kpis.item3.label": "Disponibilidad",
+    "sections.chain.title": "Etapas de la cadena de suministro",
+    "sections.chain.stage1.title": "Origen",
+    "sections.chain.stage1.description": "Captura de datos en la granja o productor.",
+    "sections.chain.stage1.alt": "Agricultor registrando datos de cultivo en una granja",
+    "sections.chain.stage2.title": "Procesamiento",
+    "sections.chain.stage2.description": "Monitoreo de la transformación en tiempo real.",
+    "sections.chain.stage2.alt": "Línea de procesamiento de alimentos bajo supervisión",
+    "sections.chain.stage3.title": "Distribución",
+    "sections.chain.stage3.description": "Control de la logística y la cadena de frío.",
+    "sections.chain.stage3.alt": "Camión de distribución con temperatura monitoreada",
+    "sections.chain.stage4.title": "Venta minorista",
+    "sections.chain.stage4.description": "Compartir información del producto con los consumidores.",
+    "sections.chain.stage4.alt": "Cliente revisando información de producto en la tienda",
+    "sections.trust.title": "Con la confianza de líderes de la industria",
+    "sections.trust.card1.alt": "Retrato de una directora de calidad",
+    "sections.trust.card1.quote": "“Con FoodChain trazamos cada lote en minutos y auditamos sin interrupciones.”",
+    "sections.trust.card1.cite": "Ana García — Directora de Calidad",
+    "sections.trust.card2.alt": "Retrato de un gerente de operaciones",
+    "sections.trust.card2.quote": "“La transparencia que damos a distribuidores y clientes elevó nuestra reputación.”",
+    "sections.trust.card2.cite": "Carlos Rodríguez — Gerente de Operaciones",
+    "sections.benefits.title": "Beneficios clave",
+    "sections.benefits.row1.title": "Transparencia total",
+    "sections.benefits.row1.description": "Acceda a información detallada en cada etapa de la cadena.",
+    "sections.benefits.row2.title": "Cumplimiento normativo",
+    "sections.benefits.row2.description": "Manténgase alineado con las regulaciones locales e internacionales.",
+    "sections.benefits.row3.title": "Reducción de riesgos",
+    "sections.benefits.row3.description": "Identifique rápidamente desviaciones y lotes afectados.",
+    "sections.benefits.row4.title": "Confianza del consumidor",
+    "sections.benefits.row4.description": "Ofrezca información verificable en cada compra.",
+    "sections.segments.title": "Segmentos objetivo",
+    "sections.segments.tabsLabel": "Segmentos objetivo",
+    "sections.segments.tab1": "Productores",
+    "sections.segments.tab2": "Empresas/Minoristas",
+    "sections.segments.tab3": "Consumidores",
+    "sections.segments.panel1.list1": "Certificados de origen digitales y listos para exportación.",
+    "sections.segments.panel1.list2": "Alertas tempranas de riesgos sanitarios o climáticos.",
+    "sections.segments.panel1.list3": "Integración con ERPs y sensores en campo.",
+    "sections.segments.panel1.testimonial": "“Ahora probamos la trazabilidad de los lotes sin papeleo.”",
+    "sections.segments.panel1.cta": "Contáctenos",
+    "sections.segments.panel2.list1": "Tablero unificado para lotes, proveedores y auditorías.",
+    "sections.segments.panel2.list2": "Informes regulatorios y de calidad automatizados.",
+    "sections.segments.panel2.list3": "SLA de monitoreo 24/7 con soporte experto.",
+    "sections.segments.panel2.testimonial": "“Redujimos cada auditoría a menos de una hora.”",
+    "sections.segments.panel2.cta": "Hablar con ventas",
+    "sections.segments.panel3.list1": "Verificación instantánea a través de códigos QR en el paquete.",
+    "sections.segments.panel3.list2": "Datos nutricionales transparentes y sellos de confianza.",
+    "sections.segments.panel3.list3": "Alertas personalizadas sobre retiros o cambios de lote.",
+    "sections.segments.panel3.testimonial": "“Confiamos en la marca porque vemos todo el recorrido.”",
+    "sections.segments.panel3.cta": "Contáctenos",
+    "sections.usecase.title": "Caso de uso",
+    "sections.usecase.step1.aria": "Paso 1: Origen certificado",
+    "sections.usecase.step1.title": "Origen certificado",
+    "sections.usecase.step1.description": "Un productor de café registra datos de cultivo, cosecha y procesamiento.",
+    "sections.usecase.step2.aria": "Paso 2: Procesamiento transparente",
+    "sections.usecase.step2.title": "Procesamiento transparente",
+    "sections.usecase.step2.description": "Cada etapa de transformación se registra con controles de calidad.",
+    "sections.usecase.step3.aria": "Paso 3: Logística controlada",
+    "sections.usecase.step3.title": "Logística controlada",
+    "sections.usecase.step3.description": "La temperatura y la ubicación se rastrean durante todo el transporte.",
+    "sections.usecase.step4.aria": "Paso 4: Consumidor informado",
+    "sections.usecase.step4.title": "Consumidor informado",
+    "sections.usecase.step4.description": "Los compradores escanean un código QR para ver el recorrido del producto de principio a fin.",
+    "sections.featured.title": "Funcionalidades destacadas",
+    "sections.featured.card1.title": "Etiquetado QR",
+    "sections.featured.card1.description": "Asigne etiquetas QR para que las partes interesadas puedan acceder a los datos del producto al instante.",
+    "sections.featured.card2.title": "GPS y blockchain",
+    "sections.featured.card2.description": "Seguimiento en tiempo real con registros inmutables de blockchain.",
+    "sections.featured.card3.title": "Verificación del consumidor",
+    "sections.featured.card3.description": "Permita que los consumidores verifiquen la autenticidad y el origen bajo demanda.",
+    "sections.featured.card4.title": "Tablero de análisis",
+    "sections.featured.card4.description": "Visualice métricas y tendencias clave en toda su cadena de suministro.",
+    "sections.capabilities.title": "Capacidades detalladas",
+    "sections.capabilities.navLabel": "Capacidades",
+    "sections.capabilities.chip1": "Trazabilidad de extremo a extremo",
+    "sections.capabilities.chip2": "Alertas en tiempo real",
+    "sections.capabilities.chip3": "Integración de sistemas",
+    "sections.capabilities.chip4": "Informes personalizados",
+    "sections.capabilities.chip5": "API abierta",
+    "sections.capabilities.chip6": "Soporte técnico",
+    "sections.capabilities.detail1.title": "Trazabilidad de extremo a extremo",
+    "sections.capabilities.detail1.description": "Siga cada lote desde el origen hasta el cliente final con evidencia verificable.",
+    "sections.capabilities.detail2.title": "Alertas en tiempo real",
+    "sections.capabilities.detail2.description": "Reciba notificaciones instantáneas cuando se infrinjan los umbrales o procedimientos.",
+    "sections.capabilities.detail3.title": "Integración de sistemas",
+    "sections.capabilities.detail3.description": "Conéctese con ERP, CRM y redes de sensores ya existentes.",
+    "sections.capabilities.detail4.title": "Informes personalizados",
+    "sections.capabilities.detail4.description": "Genere informes basados en roles adaptados a los reguladores y socios.",
+    "sections.capabilities.detail5.title": "API abierta",
+    "sections.capabilities.detail5.description": "Use una API extensible para aplicaciones y flujos de trabajo personalizados.",
+    "sections.capabilities.detail6.title": "Soporte técnico",
+    "sections.capabilities.detail6.description": "Confíe en especialistas para la incorporación, capacitación y soporte continuo.",
+    "sections.pricing.title": "Planes y precios",
+    "sections.pricing.basic.name": "Básico",
+    "sections.pricing.basic.amount": "S/ 99",
+    "sections.pricing.basic.period": "/mes",
+    "sections.pricing.basic.feature1": "Trazabilidad básica",
+    "sections.pricing.basic.feature2": "Hasta 1000 productos",
+    "sections.pricing.basic.feature3": "Soporte estándar",
+    "sections.pricing.basic.cta": "Seleccionar",
+    "sections.pricing.pro.badge": "Recomendado",
+    "sections.pricing.pro.badgeAria": "Plan recomendado",
+    "sections.pricing.pro.name": "Profesional",
+    "sections.pricing.pro.amount": "S/ 299",
+    "sections.pricing.pro.period": "/mes",
+    "sections.pricing.pro.feature1": "Trazabilidad avanzada",
+    "sections.pricing.pro.feature2": "Hasta 10,000 productos",
+    "sections.pricing.pro.feature3": "Alertas personalizadas",
+    "sections.pricing.pro.feature4": "Soporte prioritario",
+    "sections.pricing.pro.cta": "Seleccionar",
+    "sections.pricing.enterprise.name": "Empresarial",
+    "sections.pricing.enterprise.amount": "Contactar",
+    "sections.pricing.enterprise.feature1": "Trazabilidad completa",
+    "sections.pricing.enterprise.feature2": "Productos ilimitados",
+    "sections.pricing.enterprise.feature3": "Integraciones personalizadas",
+    "sections.pricing.enterprise.feature4": "Soporte dedicado",
+    "sections.pricing.enterprise.cta": "Contactar",
+    "fab.whatsapp.aria": "Chatear por WhatsApp",
+    "fab.whatsapp.href": "https://wa.me/XXXXXXXXXXX?text=Hola%20FoodChain,%20quiero%20una%20demo",
+    "header.brandAria": "Regresar al inicio",
+    "header.langToggle": "Cambiar idioma ES/EN",
+    "header.themeToggle": "Cambiar tema",
+    "header.menuOpen": "Abrir menú",
+    "header.menuClose": "Cerrar menú",
+    "sections.contact.title": "Hablemos de tu trazabilidad",
+    "sections.contact.description": "Te ayudamos a implementar registros auditables, verificación pública y reportes listos para reguladores. Déjanos tus datos y te escribimos hoy.",
+    "sections.contact.status.success": "¡Gracias! Tu solicitud fue enviada. Te contactaremos en menos de 24 h hábiles.",
+    "sections.contact.status.cta": "Agendar demo",
+    "sections.contact.status.error": "No pudimos procesar tu solicitud. Intenta de nuevo.",
+    "sections.contact.status.successToast": "Solicitud enviada. Te contactaremos pronto.",
+    "sections.contact.status.errorToast": "Revisa los campos e inténtalo nuevamente.",
+    "sections.contact.submit": "Enviar",
+    "sections.contact.submitAria": "Enviar formulario de contacto",
+    "sections.contact.form.email.label": "Correo electrónico",
+    "sections.contact.form.email.placeholder": "tu@empresa.com",
+    "sections.contact.form.email.errorRequired": "Ingresa un correo electrónico.",
+    "sections.contact.form.email.errorInvalid": "Ingresa un correo electrónico válido.",
+    "sections.contact.form.name.label": "Nombre",
+    "sections.contact.form.name.placeholder": "Nombre completo",
+    "sections.contact.form.name.errorRequired": "Ingresa tu nombre.",
+    "sections.contact.form.name.errorMinLength": "Ingresa al menos 2 caracteres.",
+    "sections.contact.form.company.label": "Empresa",
+    "sections.contact.form.company.placeholder": "Nombre de la empresa",
+    "sections.contact.form.company.errorRequired": "Ingresa el nombre de la empresa.",
+    "sections.contact.form.company.errorMinLength": "Ingresa al menos 2 caracteres.",
+    "sections.contact.form.phone.label": "Teléfono",
+    "sections.contact.form.phone.placeholder": "+51 999 999 999",
+    "sections.contact.form.phone.errorInvalid": "Formato de teléfono no válido.",
+    "sections.contact.form.message.label": "Mensaje",
+    "sections.contact.form.message.placeholder": "Cuéntanos sobre tu proyecto",
+    "sections.contact.form.message.errorRequired": "Cuéntanos de qué trata tu proyecto.",
+    "sections.contact.form.message.errorMinLength": "Describe tu proyecto en al menos 20 caracteres.",
+    "sections.contact.form.captcha.label": "Escribe el código",
+    "sections.contact.form.captcha.placeholder": "Escribe el código",
+    "sections.contact.form.captcha.errorRequired": "Ingresa el código mostrado.",
+    "sections.contact.form.captcha.errorInvalid": "El código no coincide.",
+    "sections.contact.form.captchaRefresh": "Generar un nuevo código",
+    "sections.contact.form.consent.label": "He leído y acepto la <a href=\"#\">Política de privacidad</a>.",
+    "sections.contact.form.consent.errorRequired": "Debes aceptar la política de privacidad.",
+    "sections.faq.title": "Preguntas frecuentes",
+    "sections.faq.items.1.question": "¿Qué es FoodChain?",
+    "sections.faq.items.1.answer": "Digitaliza y asegura la trazabilidad: QR firmado, hashes en blockchain y verificación pública.",
+    "sections.faq.items.2.question": "¿Cómo funciona la integración?",
+    "sections.faq.items.2.answer": "API y conectores con ERP/CRM. Empezamos con piloto y capacitación por rol.",
+    "sections.faq.items.3.question": "¿Qué soporte ofrecen?",
+    "sections.faq.items.3.answer": "Onboarding, mesa de ayuda y planes con SLA.",
+    "footer.brandAria": "Regresar al inicio",
+    "footer.brandDescription": "Confianza verificable y trazabilidad auditable en cada lote.",
+    "footer.socialAria": "Redes sociales",
+    "footer.socialTwitter": "Twitter",
+    "footer.socialLinkedin": "LinkedIn",
+    "footer.columns.product": "Producto",
+    "footer.columns.resources": "Recursos",
+    "footer.columns.legal": "Legal",
+    "footer.links.home": "Inicio",
+    "footer.links.solution": "Solución",
+    "footer.links.pricing": "Precios",
+    "footer.links.demo": "Demo",
+    "footer.links.cases": "Casos",
+    "footer.links.blog": "Blog",
+    "footer.links.docs": "Docs",
+    "footer.links.help": "Centro de ayuda",
+    "footer.links.privacy": "Privacidad",
+    "footer.links.terms": "Términos",
+    "footer.links.cookies": "Cookies",
+    "footer.copy": "© <span id=\"footer-year\"></span> FoodChain — Todos los derechos reservados."
 }
