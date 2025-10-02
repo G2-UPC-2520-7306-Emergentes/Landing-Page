@@ -127,39 +127,64 @@ function initLanguage(options = {}) {
 
     const loadTranslations = async (lang) => {
         if (translationCache.has(lang)) {
+            console.log(`[i18n] Using cached translations for ${lang}`);
             return translationCache.get(lang);
         }
         try {
-            const response = await fetch(`./i18n/${lang}.json`, { cache: 'no-store' });
+            const url = `./i18n/${lang}.json`;
+            console.log(`[i18n] Loading translations from ${url}`);
+            const response = await fetch(url, { cache: 'no-store' });
             if (!response.ok) {
-                throw new Error(`Unable to load translations for ${lang}`);
+                throw new Error(`Unable to load translations for ${lang} (HTTP ${response.status})`);
             }
             const data = await response.json();
             translationCache.set(lang, data);
+            console.log(`[i18n] Loaded ${Object.keys(data).length} translation keys for ${lang}`);
             return data;
         } catch (error) {
-            console.error(error);
+            console.error(`[i18n] Error loading translations:`, error);
             return {};
         }
     };
 
     const applyTranslations = (translations) => {
+        // Translate text content elements
         document.querySelectorAll('[data-i18n]').forEach((element) => {
             const key = element.getAttribute('data-i18n');
             const value = getNestedTranslation(translations, key);
             if (value !== undefined) {
-                element.innerHTML = value;
+                // Special handling for <title> tag
+                if (element.tagName === 'TITLE') {
+                    element.textContent = value;
+                } else if (value.includes('<')) {
+                    // Use innerHTML for elements with HTML content
+                    element.innerHTML = value;
+                } else {
+                    // Use textContent for text-only elements
+                    element.textContent = value;
+                }
             }
         });
 
+        // Translate meta content attributes (including OG and Twitter)
         document.querySelectorAll('[data-i18n-content]').forEach((element) => {
             const key = element.getAttribute('data-i18n-content');
             const value = getNestedTranslation(translations, key);
             if (value !== undefined) {
+                // Update content attribute for meta tags
                 element.setAttribute('content', value);
+                
+                // For Open Graph and Twitter meta tags, also update corresponding properties
+                if (element.hasAttribute('property')) {
+                    const property = element.getAttribute('property');
+                    if (property === 'og:title' || property === 'twitter:title') {
+                        // Already handled by content attribute
+                    }
+                }
             }
         });
 
+        // Translate other attributes (aria-label, placeholder, etc.)
         document.querySelectorAll('[data-i18n-attr]').forEach((element) => {
             const mappings = element.getAttribute('data-i18n-attr').split(';');
             mappings.forEach((mapping) => {
@@ -176,6 +201,7 @@ function initLanguage(options = {}) {
 
     const setLanguage = async (lang) => {
         const langCode = lang === 'en' ? 'en' : 'es';
+        console.log(`[i18n] Setting language to ${langCode}`);
         const translations = await loadTranslations(langCode);
         applyTranslations(translations);
         document.documentElement.lang = langCode;
@@ -187,6 +213,7 @@ function initLanguage(options = {}) {
         }
         safeStorage.set(STORAGE_KEYS.lang, langCode);
         currentLang = langCode;
+        console.log(`[i18n] Language applied successfully: ${langCode}`);
         if (typeof onAfterApply === 'function') {
             onAfterApply();
         }
