@@ -124,32 +124,43 @@ function initLanguage(options = {}) {
     const langToggle = document.getElementById('langToggle');
     const langToggleText = document.getElementById('langToggleText');
     let currentLang = safeStorage.get(STORAGE_KEYS.lang) || (rootElement.lang || 'es');
+    
+    console.log('[i18n] 🚀 Init language system');
+    console.log('[i18n] langToggle element:', langToggle ? '✅ Found' : '❌ NOT FOUND');
+    console.log('[i18n] langToggleText element:', langToggleText ? '✅ Found' : '❌ NOT FOUND');
+    console.log('[i18n] Initial language:', currentLang);
 
     const loadTranslations = async (lang) => {
         if (translationCache.has(lang)) {
-            console.log(`[i18n] Using cached translations for ${lang}`);
+            console.log(`[i18n] ♻️ Using cached translations for ${lang}`);
             return translationCache.get(lang);
         }
         try {
             const url = `./i18n/${lang}.json`;
-            console.log(`[i18n] Loading translations from ${url}`);
-            const response = await fetch(url, { cache: 'no-store' });
+            console.log(`[i18n] 📥 Loading translations from ${url}`);
+            const response = await fetch(url);
             if (!response.ok) {
                 throw new Error(`Unable to load translations for ${lang} (HTTP ${response.status})`);
             }
             const data = await response.json();
             translationCache.set(lang, data);
-            console.log(`[i18n] Loaded ${Object.keys(data).length} translation keys for ${lang}`);
+            console.log(`[i18n] ✅ Loaded ${Object.keys(data).length} translation keys for ${lang}`);
             return data;
         } catch (error) {
-            console.error(`[i18n] Error loading translations:`, error);
+            console.error(`[i18n] ❌ Error loading translations:`, error);
             return {};
         }
     };
 
     const applyTranslations = (translations) => {
+        console.log('[i18n] 🔄 Applying translations...');
+        let textCount = 0, contentCount = 0, attrCount = 0;
+        
         // Translate text content elements
-        document.querySelectorAll('[data-i18n]').forEach((element) => {
+        const textElements = document.querySelectorAll('[data-i18n]');
+        console.log(`[i18n] Found ${textElements.length} elements with [data-i18n]`);
+        
+        textElements.forEach((element) => {
             const key = element.getAttribute('data-i18n');
             const value = getNestedTranslation(translations, key);
             if (value !== undefined) {
@@ -163,29 +174,26 @@ function initLanguage(options = {}) {
                     // Use textContent for text-only elements
                     element.textContent = value;
                 }
+                textCount++;
+            } else {
+                console.warn(`[i18n] ⚠️ Translation not found for key: ${key}`);
             }
         });
 
         // Translate meta content attributes (including OG and Twitter)
-        document.querySelectorAll('[data-i18n-content]').forEach((element) => {
+        const contentElements = document.querySelectorAll('[data-i18n-content]');
+        contentElements.forEach((element) => {
             const key = element.getAttribute('data-i18n-content');
             const value = getNestedTranslation(translations, key);
             if (value !== undefined) {
-                // Update content attribute for meta tags
                 element.setAttribute('content', value);
-                
-                // For Open Graph and Twitter meta tags, also update corresponding properties
-                if (element.hasAttribute('property')) {
-                    const property = element.getAttribute('property');
-                    if (property === 'og:title' || property === 'twitter:title') {
-                        // Already handled by content attribute
-                    }
-                }
+                contentCount++;
             }
         });
 
         // Translate other attributes (aria-label, placeholder, etc.)
-        document.querySelectorAll('[data-i18n-attr]').forEach((element) => {
+        const attrElements = document.querySelectorAll('[data-i18n-attr]');
+        attrElements.forEach((element) => {
             const mappings = element.getAttribute('data-i18n-attr').split(';');
             mappings.forEach((mapping) => {
                 if (!mapping.trim()) return;
@@ -194,9 +202,12 @@ function initLanguage(options = {}) {
                 const value = getNestedTranslation(translations, key);
                 if (value !== undefined) {
                     element.setAttribute(attrName, value);
+                    attrCount++;
                 }
             });
         });
+        
+        console.log(`[i18n] ✅ Translation complete: ${textCount} texts, ${contentCount} metas, ${attrCount} attributes`);
     };
 
     const setLanguage = async (lang) => {
@@ -220,12 +231,19 @@ function initLanguage(options = {}) {
     };
 
     if (langToggle) {
+        console.log('[i18n] Adding click listener to langToggle');
         langToggle.addEventListener('click', () => {
+            console.log('[i18n] 🔥 CLICK DETECTED on langToggle');
+            console.log('[i18n] Current language before toggle:', currentLang);
             const nextLang = currentLang === 'en' ? 'es' : 'en';
+            console.log('[i18n] Next language:', nextLang);
             setLanguage(nextLang);
         });
+    } else {
+        console.error('[i18n] ❌ langToggle button NOT FOUND! Cannot add event listener.');
     }
 
+    console.log('[i18n] Calling initial setLanguage with:', currentLang);
     setLanguage(currentLang);
 }
 

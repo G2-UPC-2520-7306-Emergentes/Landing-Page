@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnóstico i18n</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 2rem;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        .section {
+            background: #252526;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #007acc;
+        }
+        .success { color: #4ec9b0; }
+        .error { color: #f48771; }
+        .warning { color: #dcdcaa; }
+        button {
+            background: #007acc;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #005a9e;
+        }
+        pre {
+            background: #1e1e1e;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Diagnóstico del Sistema i18n</h1>
+    
+    <div class="section">
+        <h2>1. Verificación de Elementos DOM</h2>
+        <div id="dom-check"></div>
+    </div>
+
+    <div class="section">
+        <h2>2. Prueba de Carga de JSON</h2>
+        <button onclick="testLoadES()">Cargar ES</button>
+        <button onclick="testLoadEN()">Cargar EN</button>
+        <div id="json-test"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. Prueba Manual del Toggle</h2>
+        <p>Idioma actual: <span id="current-lang" class="warning">--</span></p>
+        <button onclick="manualToggle()">Cambiar Idioma Manualmente</button>
+        <div id="manual-result"></div>
+    </div>
+
+    <div class="section">
+        <h2>4. Elementos con data-i18n</h2>
+        <div id="i18n-elements"></div>
+    </div>
+
+    <div class="section">
+        <h2>5. Log de Eventos</h2>
+        <pre id="event-log"></pre>
+    </div>
+
+    <script>
+        let eventLog = [];
+        
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const prefix = type === 'error' ? '❌' : type === 'success' ? '✅' : 'ℹ️';
+            eventLog.push(`[${timestamp}] ${prefix} ${message}`);
+            document.getElementById('event-log').textContent = eventLog.join('\n');
+        }
+
+        // 1. Verificar elementos DOM
+        function checkDOM() {
+            const elements = {
+                'langToggle button': document.getElementById('langToggle'),
+                'langToggleText span': document.getElementById('langToggleText'),
+                'themeToggle button': document.getElementById('themeToggle')
+            };
+
+            let html = '<ul>';
+            for (const [name, element] of Object.entries(elements)) {
+                if (element) {
+                    html += `<li class="success">✓ ${name} encontrado</li>`;
+                    log(`${name} encontrado`, 'success');
+                } else {
+                    html += `<li class="error">✗ ${name} NO encontrado</li>`;
+                    log(`${name} NO encontrado`, 'error');
+                }
+            }
+            html += '</ul>';
+            document.getElementById('dom-check').innerHTML = html;
+        }
+
+        // 2. Probar carga de JSON
+        async function testLoadES() {
+            await testLoadJSON('es');
+        }
+
+        async function testLoadEN() {
+            await testLoadJSON('en');
+        }
+
+        async function testLoadJSON(lang) {
+            const url = `./i18n/${lang}.json`;
+            try {
+                log(`Intentando cargar ${url}...`);
+                const response = await fetch(url);
+                log(`Response status: ${response.status}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                const keys = Object.keys(data);
+                
+                document.getElementById('json-test').innerHTML = `
+                    <div class="success">
+                        <p>✅ ${lang}.json cargado correctamente</p>
+                        <p>Total de claves: ${keys.length}</p>
+                        <p>Ejemplo de clave: <code>hero.title = "${data['hero.title']}"</code></p>
+                    </div>
+                `;
+                log(`${lang}.json cargado: ${keys.length} claves`, 'success');
+                
+                return data;
+            } catch (error) {
+                document.getElementById('json-test').innerHTML = `
+                    <div class="error">
+                        <p>❌ Error cargando ${lang}.json</p>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+                log(`Error cargando ${lang}.json: ${error.message}`, 'error');
+                return null;
+            }
+        }
+
+        // 3. Toggle manual
+        let currentLang = 'es';
+        
+        async function manualToggle() {
+            const nextLang = currentLang === 'es' ? 'en' : 'es';
+            log(`Cambiando de ${currentLang} a ${nextLang}`);
+            
+            const translations = await testLoadJSON(nextLang);
+            if (translations) {
+                applyTranslationsManual(translations);
+                currentLang = nextLang;
+                document.getElementById('current-lang').textContent = currentLang.toUpperCase();
+                document.getElementById('manual-result').innerHTML = 
+                    `<p class="success">✅ Idioma cambiado a ${nextLang.toUpperCase()}</p>`;
+                log(`Idioma cambiado exitosamente a ${nextLang}`, 'success');
+            } else {
+                document.getElementById('manual-result').innerHTML = 
+                    `<p class="error">❌ Error al cambiar idioma</p>`;
+                log(`Error al cambiar idioma`, 'error');
+            }
+        }
+
+        function getNestedTranslation(translations, key) {
+            return key.split('.').reduce((acc, segment) => 
+                (acc && acc[segment] !== undefined ? acc[segment] : undefined), translations);
+        }
+
+        function applyTranslationsManual(translations) {
+            let count = 0;
+            
+            // En index.html
+            const elements = parent.document.querySelectorAll('[data-i18n]');
+            log(`Encontrados ${elements.length} elementos con data-i18n`);
+            
+            elements.forEach((element) => {
+                const key = element.getAttribute('data-i18n');
+                const value = getNestedTranslation(translations, key);
+                if (value !== undefined) {
+                    if (element.tagName === 'TITLE') {
+                        element.textContent = value;
+                    } else if (value.includes('<')) {
+                        element.innerHTML = value;
+                    } else {
+                        element.textContent = value;
+                    }
+                    count++;
+                }
+            });
+            
+            log(`${count} elementos traducidos`);
+        }
+
+        // 4. Listar elementos con data-i18n
+        function listI18nElements() {
+            const elements = parent.document.querySelectorAll('[data-i18n]');
+            let html = `<p>Total: ${elements.length} elementos</p><ul>`;
+            
+            let shown = 0;
+            elements.forEach((el) => {
+                if (shown < 10) {
+                    const key = el.getAttribute('data-i18n');
+                    const tag = el.tagName.toLowerCase();
+                    const text = el.textContent.substring(0, 50);
+                    html += `<li><code>${tag}</code> → <code>${key}</code>: "${text}..."</li>`;
+                    shown++;
+                }
+            });
+            
+            if (elements.length > 10) {
+                html += `<li class="warning">... y ${elements.length - 10} más</li>`;
+            }
+            
+            html += '</ul>';
+            document.getElementById('i18n-elements').innerHTML = html;
+            log(`Listados ${shown} de ${elements.length} elementos con data-i18n`);
+        }
+
+        // Ejecutar al cargar
+        window.addEventListener('load', () => {
+            log('Diagnóstico iniciado');
+            checkDOM();
+            listI18nElements();
+            document.getElementById('current-lang').textContent = 'ES';
+            
+            // Intentar acceder al botón del padre
+            setTimeout(() => {
+                const parentToggle = parent.document.getElementById('langToggle');
+                if (parentToggle) {
+                    log('✅ Botón langToggle encontrado en página principal', 'success');
+                    
+                    // Verificar si tiene event listeners
+                    const hasListeners = parentToggle.onclick !== null;
+                    log(`Tiene onclick: ${hasListeners}`);
+                } else {
+                    log('❌ Botón langToggle NO encontrado en página principal', 'error');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
