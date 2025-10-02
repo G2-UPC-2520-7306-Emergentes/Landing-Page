@@ -23,9 +23,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Language toggle
     const langToggle = document.getElementById('langToggle');
+    const langToggleText = document.getElementById('langToggleText');
+    let currentLang = 'en';
+
+    const fetchTranslations = async (lang) => {
+        const response = await fetch(`./i18n/${lang}.json`);
+        return await response.json();
+    };
+
+    const updateContent = (translations) => {
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[key]) {
+                element.innerHTML = translations[key];
+            }
+        });
+        document.querySelectorAll('[data-i18n-content]').forEach(element => {
+            const key = element.getAttribute('data-i18n-content');
+            if (translations[key]) {
+                element.setAttribute('content', translations[key]);
+            }
+        });
+        document.querySelectorAll('[data-i18n-attr]').forEach(element => {
+            const attrs = element.getAttribute('data-i18n-attr').split(';');
+            attrs.forEach(attr => {
+                const [attrName, key] = attr.split(':');
+                if (translations[key]) {
+                    element.setAttribute(attrName, translations[key]);
+                }
+            });
+        });
+    };
+
     if (langToggle) {
-        langToggle.addEventListener('click', () => {
-            // Language toggle functionality here
+        langToggle.addEventListener('click', async () => {
+            currentLang = currentLang === 'en' ? 'es' : 'en';
+            const translations = await fetchTranslations(currentLang);
+            updateContent(translations);
+            langToggleText.textContent = currentLang.toUpperCase();
         });
     }
 

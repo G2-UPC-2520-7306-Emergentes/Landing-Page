@@ -15,8 +15,7 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  transition: background-color 0.55s cubic-bezier(0.4, 0.0, 0.2, 1),
-              color 0.55s cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
