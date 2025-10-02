@@ -164,15 +164,13 @@ function initLanguage(options = {}) {
             const key = element.getAttribute('data-i18n');
             const value = getNestedTranslation(translations, key);
             if (value !== undefined) {
-                // Special handling for <title> tag
+                // Always use innerHTML to handle HTML entities and nested tags
+                // Special handling for <title> tag - use textContent
                 if (element.tagName === 'TITLE') {
                     element.textContent = value;
-                } else if (value.includes('<')) {
-                    // Use innerHTML for elements with HTML content
-                    element.innerHTML = value;
                 } else {
-                    // Use textContent for text-only elements
-                    element.textContent = value;
+                    // Use innerHTML for all other elements to properly handle HTML content
+                    element.innerHTML = value;
                 }
                 textCount++;
             } else {
