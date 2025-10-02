@@ -2,7 +2,7 @@
 const rootElement = document.documentElement;
 const STORAGE_KEYS = {
     theme: 'theme',
-    lang: 'lang'
+    language: 'language'
 };
 
 const safeStorage = {
@@ -30,13 +30,197 @@ const safeStorage = {
     }
 };
 
+const DEFAULT_LANGUAGE = 'en';
+const SUPPORTED_LANGUAGES = ['en', 'es'];
+const translationsCache = new Map();
+
+function normalizeLanguage(value, fallback = DEFAULT_LANGUAGE, supported = SUPPORTED_LANGUAGES) {
+    if (typeof value !== 'string' || !value.trim()) {
+        return supported.includes(fallback) ? fallback : supported[0];
+    }
+    const normalized = value.trim().toLowerCase();
+    if (supported.includes(normalized)) {
+        return normalized;
+    }
+    const matched = supported.find((language) => normalized.startsWith(`${language}-`));
+    if (matched) {
+        return matched;
+    }
+    return supported.includes(fallback) ? fallback : supported[0];
+}
+
+function getNestedValue(dictionary, path) {
+    if (!dictionary || !path) return undefined;
+    return path.split('.').reduce((accumulator, segment) => {
+        if (accumulator && Object.prototype.hasOwnProperty.call(accumulator, segment)) {
+            return accumulator[segment];
+        }
+        return undefined;
+    }, dictionary);
+}
+
+function applyTranslations(dictionary) {
+    if (!dictionary) return;
+    const elements = document.querySelectorAll('[data-i18n], [data-i18n-attrs]');
+    elements.forEach((element) => {
+        const key = element.dataset.i18n;
+        if (key) {
+            const value = getNestedValue(dictionary, key);
+            if (value !== undefined && value !== null) {
+                if (element.dataset.i18nType === 'html') {
+                    element.innerHTML = value;
+                } else {
+                    element.textContent = value;
+                }
+            }
+        }
+
+        const attrMap = element.dataset.i18nAttrs;
+        if (!attrMap) return;
+        attrMap.split(',').forEach((pair) => {
+            if (!pair) return;
+            const [attribute, attrKey] = pair.split(':').map((item) => item && item.trim());
+            if (!attribute || !attrKey) return;
+            const attrValue = getNestedValue(dictionary, attrKey);
+            if (attrValue === undefined || attrValue === null) return;
+            if (attribute === 'html') {
+                element.innerHTML = attrValue;
+                return;
+            }
+            if (attribute === 'text') {
+                element.textContent = attrValue;
+                return;
+            }
+            element.setAttribute(attribute, attrValue);
+        });
+    });
+}
+
+function initI18n({ defaultLanguage = DEFAULT_LANGUAGE, supportedLanguages = SUPPORTED_LANGUAGES, onChange } = {}) {
+    const htmlElement = document.documentElement;
+    const languageButtons = Array.from(document.querySelectorAll('[data-lang]'));
+    let currentLanguage = normalizeLanguage(htmlElement.lang || defaultLanguage, defaultLanguage, supportedLanguages);
+    let readyResolved = false;
+    let resolveReady;
+    const ready = new Promise((resolve) => {
+        resolveReady = (language) => {
+            if (readyResolved) return;
+            readyResolved = true;
+            resolve(language);
+        };
+    });
+
+    const setButtonState = (language) => {
+        languageButtons.forEach((button) => {
+            const targetLang = normalizeLanguage(button.dataset.lang, defaultLanguage, supportedLanguages);
+            const isActive = targetLang === language;
+            button.classList.toggle('is-active', isActive);
+            button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+    };
+
+    const loadDictionary = async (language) => {
+        const normalized = normalizeLanguage(language, defaultLanguage, supportedLanguages);
+        if (translationsCache.has(normalized)) {
+            return translationsCache.get(normalized);
+        }
+        const response = await fetch(`./i18n/${normalized}.json`, { cache: 'no-store' });
+        if (!response.ok) {
+            throw new Error(`Unable to load translations for ${normalized}`);
+        }
+        const data = await response.json();
+        translationsCache.set(normalized, data);
+        return data;
+    };
+
+    const applyLanguage = (language, dictionary, { persist = true, notify = true } = {}) => {
+        if (!dictionary) return currentLanguage;
+        applyTranslations(dictionary);
+        htmlElement.setAttribute('lang', language);
+        setButtonState(language);
+        if (persist) {
+            safeStorage.set(STORAGE_KEYS.language, language);
+        }
+        currentLanguage = language;
+        if (typeof onChange === 'function' && notify) {
+            onChange(language);
+        }
+        return language;
+    };
+
+    const setLanguage = async (language, options = {}) => {
+        const normalized = normalizeLanguage(language, defaultLanguage, supportedLanguages);
+        try {
+            const dictionary = await loadDictionary(normalized);
+            return applyLanguage(normalized, dictionary, options);
+        } catch (error) {
+            console.warn('Failed to set language', normalized, error);
+            if (normalized !== defaultLanguage) {
+                try {
+                    const fallbackDictionary = await loadDictionary(defaultLanguage);
+                    return applyLanguage(defaultLanguage, fallbackDictionary, options);
+                } catch (fallbackError) {
+                    console.error('Failed to load fallback language', fallbackError);
+                }
+            }
+        }
+        return currentLanguage;
+    };
+
+    const detectLanguage = () => {
+        const stored = safeStorage.get(STORAGE_KEYS.language);
+        if (stored) {
+            return normalizeLanguage(stored, defaultLanguage, supportedLanguages);
+        }
+        const navigatorLanguages = Array.isArray(navigator.languages) && navigator.languages.length
+            ? navigator.languages
+            : [navigator.language].filter(Boolean);
+        for (const candidate of navigatorLanguages) {
+            const normalized = normalizeLanguage(candidate, defaultLanguage, supportedLanguages);
+            if (supportedLanguages.includes(normalized)) {
+                return normalized;
+            }
+        }
+        return defaultLanguage;
+    };
+
+    languageButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const targetLang = button.dataset.lang;
+            setLanguage(targetLang, { persist: true });
+        });
+    });
+
+    setButtonState(currentLanguage);
+
+    const initialLanguage = detectLanguage();
+    setLanguage(initialLanguage, { persist: false, notify: false })
+        .then((language) => {
+            resolveReady(language);
+            if (typeof onChange === 'function') {
+                onChange(language);
+            }
+        })
+        .catch((error) => {
+            console.warn('i18n initialization error', error);
+            resolveReady(currentLanguage);
+            if (typeof onChange === 'function') {
+                onChange(currentLanguage);
+            }
+        });
+
+    return {
+        getLanguage: () => currentLanguage,
+        setLanguage,
+        ready
+    };
+}
+
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 const storedThemePreference = safeStorage.get(STORAGE_KEYS.theme);
 const derivedTheme = storedThemePreference || (prefersDarkScheme.matches ? 'dark' : 'light');
 rootElement.classList.add(`theme-${derivedTheme}`, 'theme-preload');
 rootElement.style.setProperty('color-scheme', derivedTheme);
-
-const translationCache = new Map();
 
 function debounce(fn, delay = 150) {
     let timeoutId = null;
@@ -44,10 +228,6 @@ function debounce(fn, delay = 150) {
         window.clearTimeout(timeoutId);
         timeoutId = window.setTimeout(() => fn.apply(this, args), delay);
     };
-}
-
-function getNestedTranslation(translations, key) {
-    return key.split('.').reduce((acc, segment) => (acc && acc[segment] !== undefined ? acc[segment] : undefined), translations);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -62,20 +242,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactApi = initContactForm(toastApi);
     const segmentsApi = initSegmentTabs();
     const featuresApi = initFeatureChips();
-    initFaqAccordion();
+    const faqApi = initFaqAccordion();
     initScrollReveal();
     updateFooterYear();
 
-    initLanguage({
-        onAfterApply() {
-            updateFooterYear();
-            headerApi.refreshLabels();
-            segmentsApi.refreshIndicator();
-            featuresApi.refreshHeights();
-            contactApi.refreshCopy();
-            themeApi.refreshAria();
+    const syncUi = () => {
+        headerApi.refreshLabels();
+        segmentsApi.refreshIndicator();
+        featuresApi.refreshHeights();
+        contactApi.refreshCopy();
+        themeApi.refreshAria();
+        if (faqApi && typeof faqApi.refreshHeights === 'function') {
+            faqApi.refreshHeights();
+        }
+    };
+
+    const i18nApi = initI18n({
+        onChange: () => {
+            syncUi();
         }
     });
+
+    syncUi();
+    if (i18nApi && typeof i18nApi.ready === 'object' && typeof i18nApi.ready.then === 'function') {
+        i18nApi.ready.then(() => {
+            syncUi();
+        });
+    }
 });
 
 function initTheme(initialTheme) {
@@ -117,132 +310,6 @@ function initTheme(initialTheme) {
     };
 
     return { refreshAria };
-}
-
-function initLanguage(options = {}) {
-    const { onAfterApply } = options;
-    const langToggle = document.getElementById('langToggle');
-    const langToggleText = document.getElementById('langToggleText');
-    let currentLang = safeStorage.get(STORAGE_KEYS.lang) || (rootElement.lang || 'es');
-    
-    console.log('[i18n] 🚀 Init language system');
-    console.log('[i18n] langToggle element:', langToggle ? '✅ Found' : '❌ NOT FOUND');
-    console.log('[i18n] langToggleText element:', langToggleText ? '✅ Found' : '❌ NOT FOUND');
-    console.log('[i18n] Initial language:', currentLang);
-
-    const loadTranslations = async (lang) => {
-        if (translationCache.has(lang)) {
-            console.log(`[i18n] ♻️ Using cached translations for ${lang}`);
-            return translationCache.get(lang);
-        }
-        try {
-            const url = `./i18n/${lang}.json`;
-            console.log(`[i18n] 📥 Loading translations from ${url}`);
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Unable to load translations for ${lang} (HTTP ${response.status})`);
-            }
-            const data = await response.json();
-            translationCache.set(lang, data);
-            console.log(`[i18n] ✅ Loaded ${Object.keys(data).length} translation keys for ${lang}`);
-            return data;
-        } catch (error) {
-            console.error(`[i18n] ❌ Error loading translations:`, error);
-            return {};
-        }
-    };
-
-    const applyTranslations = (translations) => {
-        console.log('[i18n] 🔄 Applying translations...');
-        let textCount = 0, contentCount = 0, attrCount = 0;
-        
-        // Translate text content elements
-        const textElements = document.querySelectorAll('[data-i18n]');
-        console.log(`[i18n] Found ${textElements.length} elements with [data-i18n]`);
-        
-        textElements.forEach((element) => {
-            const key = element.getAttribute('data-i18n');
-            const value = getNestedTranslation(translations, key);
-            if (value !== undefined) {
-                // Always use innerHTML to handle HTML entities and nested tags
-                // Special handling for <title> tag - use textContent
-                if (element.tagName === 'TITLE') {
-                    element.textContent = value;
-                } else {
-                    // Use innerHTML for all other elements to properly handle HTML content
-                    element.innerHTML = value;
-                }
-                textCount++;
-            } else {
-                console.warn(`[i18n] ⚠️ Translation not found for key: ${key}`);
-            }
-        });
-
-        // Translate meta content attributes (including OG and Twitter)
-        const contentElements = document.querySelectorAll('[data-i18n-content]');
-        contentElements.forEach((element) => {
-            const key = element.getAttribute('data-i18n-content');
-            const value = getNestedTranslation(translations, key);
-            if (value !== undefined) {
-                element.setAttribute('content', value);
-                contentCount++;
-            }
-        });
-
-        // Translate other attributes (aria-label, placeholder, etc.)
-        const attrElements = document.querySelectorAll('[data-i18n-attr]');
-        attrElements.forEach((element) => {
-            const mappings = element.getAttribute('data-i18n-attr').split(';');
-            mappings.forEach((mapping) => {
-                if (!mapping.trim()) return;
-                const [attrName, key] = mapping.split(':').map((item) => item.trim());
-                if (!attrName || !key) return;
-                const value = getNestedTranslation(translations, key);
-                if (value !== undefined) {
-                    element.setAttribute(attrName, value);
-                    attrCount++;
-                }
-            });
-        });
-        
-        console.log(`[i18n] ✅ Translation complete: ${textCount} texts, ${contentCount} metas, ${attrCount} attributes`);
-    };
-
-    const setLanguage = async (lang) => {
-        const langCode = lang === 'en' ? 'en' : 'es';
-        console.log(`[i18n] Setting language to ${langCode}`);
-        const translations = await loadTranslations(langCode);
-        applyTranslations(translations);
-        document.documentElement.lang = langCode;
-        if (langToggleText) {
-            langToggleText.textContent = langCode.toUpperCase();
-        }
-        if (langToggle) {
-            langToggle.setAttribute('aria-pressed', langCode === 'en' ? 'true' : 'false');
-        }
-        safeStorage.set(STORAGE_KEYS.lang, langCode);
-        currentLang = langCode;
-        console.log(`[i18n] Language applied successfully: ${langCode}`);
-        if (typeof onAfterApply === 'function') {
-            onAfterApply();
-        }
-    };
-
-    if (langToggle) {
-        console.log('[i18n] Adding click listener to langToggle');
-        langToggle.addEventListener('click', () => {
-            console.log('[i18n] 🔥 CLICK DETECTED on langToggle');
-            console.log('[i18n] Current language before toggle:', currentLang);
-            const nextLang = currentLang === 'en' ? 'es' : 'en';
-            console.log('[i18n] Next language:', nextLang);
-            setLanguage(nextLang);
-        });
-    } else {
-        console.error('[i18n] ❌ langToggle button NOT FOUND! Cannot add event listener.');
-    }
-
-    console.log('[i18n] Calling initial setLanguage with:', currentLang);
-    setLanguage(currentLang);
 }
 
 function initHeader() {
@@ -401,6 +468,8 @@ function initFeatureChips() {
         return { refreshHeights: () => {} };
     }
 
+    const detailsWrapper = container.querySelector('.caracteristicas__details');
+
     if (container.dataset.detailsInit === 'true') {
         return {
             refreshHeights: () => {
@@ -415,8 +484,11 @@ function initFeatureChips() {
     const detailMap = new Map(details.map((detail) => [`#${detail.id}`, detail]));
 
     const setDetailHeight = (detail) => {
+        if (!detailsWrapper || !detail) return;
         requestAnimationFrame(() => {
-            detail.style.setProperty('--detail-max-height', `${detail.scrollHeight}px`);
+            const height = Math.ceil(detail.scrollHeight);
+            detailsWrapper.style.setProperty('--feature-detail-height', `${height}px`);
+            detailsWrapper.style.height = `${height}px`;
         });
     };
 
@@ -427,10 +499,18 @@ function initFeatureChips() {
             detail.setAttribute('aria-hidden', isActive ? 'false' : 'true');
             if (isActive) {
                 setDetailHeight(detail);
-            } else {
-                detail.style.setProperty('--detail-max-height', '0px');
             }
         });
+        if (detailsWrapper) {
+            const activeDetail = details.find((detail) => detail.classList.contains('is-active'));
+            const nextHeight = activeDetail ? Math.ceil(activeDetail.scrollHeight) : 0;
+            detailsWrapper.style.setProperty('--feature-detail-height', `${nextHeight}px`);
+            if (nextHeight === 0) {
+                detailsWrapper.style.height = '';
+            } else {
+                detailsWrapper.style.height = `${nextHeight}px`;
+            }
+        }
     };
 
     chips.forEach((chip) => {
@@ -465,7 +545,12 @@ function initFeatureChips() {
     return {
         refreshHeights: () => {
             const activeDetail = details.find((detail) => detail.classList.contains('is-active'));
-            if (activeDetail) setDetailHeight(activeDetail);
+            if (activeDetail) {
+                setDetailHeight(activeDetail);
+            } else if (detailsWrapper) {
+                detailsWrapper.style.setProperty('--feature-detail-height', '0px');
+                detailsWrapper.style.height = '';
+            }
         }
     };
 }
@@ -478,21 +563,37 @@ function initFaqAccordion() {
     const triggers = Array.from(faqSection.querySelectorAll('.faq-card__trigger'));
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    const refreshHeights = () => {
+        if (prefersReducedMotion) return;
+        triggers.forEach((trigger) => {
+            if (trigger.getAttribute('aria-expanded') !== 'true') return;
+            const panelId = trigger.getAttribute('aria-controls');
+            if (!panelId) return;
+            const panel = document.getElementById(panelId);
+            if (!panel) return;
+            panel.style.maxHeight = 'none';
+            const measuredHeight = panel.scrollHeight;
+            panel.style.maxHeight = `${measuredHeight}px`;
+            requestAnimationFrame(() => {
+                panel.style.maxHeight = 'none';
+            });
+        });
+    };
+
     const openItem = (trigger, panel) => {
         trigger.setAttribute('aria-expanded', 'true');
         panel.setAttribute('aria-hidden', 'false');
         panel.removeAttribute('hidden');
         panel.dataset.open = 'true';
-        if (prefersReducedMotion) {
-            panel.style.maxHeight = 'none';
-            return;
+        if (!prefersReducedMotion) {
+            panel.style.maxHeight = `${panel.scrollHeight}px`;
+            const handleOpenTransition = (event) => {
+                if (event.propertyName !== 'max-height') return;
+                panel.style.maxHeight = 'none';
+                panel.removeEventListener('transitionend', handleOpenTransition);
+            };
+            panel.addEventListener('transitionend', handleOpenTransition);
         }
-        panel.style.maxHeight = `${panel.scrollHeight}px`;
-        panel.addEventListener('transitionend', function handleTransitionEnd(event) {
-            if (event.propertyName !== 'max-height') return;
-            panel.style.maxHeight = 'none';
-            panel.removeEventListener('transitionend', handleTransitionEnd);
-        });
     };
 
     const closeItem = (trigger, panel) => {
@@ -547,8 +648,15 @@ function initFaqAccordion() {
                     closeItem(otherTrigger, otherPanel);
                 }
             });
+            refreshHeights();
         });
     });
+
+    window.addEventListener('resize', debounce(refreshHeights, 150));
+
+    return {
+        refreshHeights
+    };
 }
 
 function initScrollReveal() {

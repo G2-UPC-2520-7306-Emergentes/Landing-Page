@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <title>FoodChain | Auditable Traceability for the Food Industry</title>
+    <meta name="description" content="Ensure safety and transparency in your supply chain with FoodChain. Real-time traceability, regulatory compliance, and efficient collaboration.">
+    <link rel="canonical" href="./">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="./">
+    <meta property="og:title" content="FoodChain | Auditable Traceability for the Food Industry">
+    <meta property="og:description" content="Ensure safety and transparency in your supply chain with FoodChain. Real-time traceability, regulatory compliance, and efficient collaboration.">
+    <meta property="og:image" content="./images/hero.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="./">
+    <meta property="twitter:title" content="FoodChain | Auditable Traceability for the Food Industry">
+    <meta property="twitter:description" content="Ensure safety and transparency in your supply chain with FoodChain. Real-time traceability, regulatory compliance, and efficient collaboration.">
+    <meta property="twitter:image" content="./images/hero.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/utilities.css">
+    <link rel="stylesheet" href="./css/styles-index.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="header__inner">
+            <div class="header__main">
+                <a href="#inicio" class="header__brand" aria-label="Back to start" data-i18n-attrs="aria-label:header.brand.ariaLabel">
+                    <span class="header__brand-icon" aria-hidden="true">
+                        <img src="./images/leaf.svg" alt="" loading="lazy">
+                    </span>
+                    <span class="header__brand-text" data-i18n="global.brand">FoodChain</span>
+                </a>
+                <nav class="header__nav" aria-label="Main navigation" data-i18n-attrs="aria-label:header.nav.ariaLabel">
+                    <ul class="header__menu">
+                        <li><a class="header__link" href="#inicio" data-i18n="header.nav.home">Home</a></li>
+                        <li><a class="header__link" href="#problema-solucion" data-i18n="header.nav.solution">Solution</a></li>
+                        <li><a class="header__link" href="#etapas-cadena" data-i18n="header.nav.stages">Stages</a></li>
+                        <li><a class="header__link" href="#beneficios" data-i18n="header.nav.benefits">Benefits</a></li>
+                        <li><a class="header__link" href="#segmentos" data-i18n="header.nav.segments">Segments</a></li>
+                        <li><a class="header__link" href="#footer" data-i18n="header.nav.contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header__actions">
+                <div class="header__cta-group">
+                    <a href="#footer" class="btn btn--primary header__cta-primary" data-i18n="header.cta.primary">Try demo</a>
+                    <a href="#" class="btn btn--outline header__cta-secondary" data-i18n="header.cta.secondary">Sign in</a>
+                </div>
+                <div class="header__toggles">
+                    <button id="themeToggle" class="header__icon-button" type="button" aria-label="Toggle theme" aria-pressed="false" data-i18n-attrs="aria-label:header.themeToggle">
+                        <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
+                </div>
+                <div class="header__language" role="group" aria-label="Language" data-i18n-attrs="aria-label:header.language.group">
+                    <button type="button" class="header__language-button" data-lang="en" aria-pressed="false" data-i18n="header.language.en" data-i18n-attrs="aria-label:header.language.enAria">EN</button>
+                    <button type="button" class="header__language-button" data-lang="es" aria-pressed="false" data-i18n="header.language.es" data-i18n-attrs="aria-label:header.language.esAria">ES</button>
+                </div>
+                <button class="header__mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-label-open="Open menu" data-label-close="Close menu" data-i18n-attrs="aria-label:header.menuToggle.aria,data-label-open:header.menuToggle.open,data-label-close:header.menuToggle.close">
+                    <svg class="icon icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+        <div class="header__mobile-nav">
+            <ul>
+                <li><a href="#inicio" data-i18n="header.nav.home">Home</a></li>
+                <li><a href="#problema-solucion" data-i18n="header.nav.solution">Solution</a></li>
+                <li><a href="#etapas-cadena" data-i18n="header.nav.stages">Stages</a></li>
+                <li><a href="#beneficios" data-i18n="header.nav.benefits">Benefits</a></li>
+                <li><a href="#segmentos" data-i18n="header.nav.segments">Segments</a></li>
+                <li><a href="#footer" data-i18n="header.nav.contact">Contact</a></li>
+            </ul>
+            <div class="header__mobile-lang" role="group" aria-label="Language" data-i18n-attrs="aria-label:header.language.group">
+                <button type="button" class="header__language-button" data-lang="en" aria-pressed="false" data-i18n="header.language.en" data-i18n-attrs="aria-label:header.language.enAria">EN</button>
+                <button type="button" class="header__language-button" data-lang="es" aria-pressed="false" data-i18n="header.language.es" data-i18n-attrs="aria-label:header.language.esAria">ES</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="inicio">
+            <div class="hero__inner container" id="hero">
+                <div class="hero__content reveal-on-scroll">
+                    <h1 data-i18n="hero.title">Build trust at every stage of your food chain with verified seals in minutes</h1>
+                    <p data-i18n="hero.description">Validate batches with a signed QR, operate with ready-made audits on a public blockchain, and share verifiable evidence with customers and authorities.</p>
+                    <ul class="hero__bullets" role="list">
+                        <li data-i18n="hero.bullet1">Certificates ready in 48 hours</li>
+                        <li data-i18n="hero.bullet2">Immediate alerts for deviations</li>
+                        <li data-i18n="hero.bullet3">Audits without spreadsheets</li>
+                    </ul>
+                    <div class="hero__ctas">
+                        <a href="#footer" class="btn btn--primary" aria-label="Open the FoodChain guided tour" data-i18n="hero.ctaPrimary" data-i18n-attrs="aria-label:hero.ctaPrimaryAria">Explore platform</a>
+                        <a href="#use-case" class="btn btn--secondary" aria-label="See a live case of FoodChain" data-i18n="hero.ctaSecondary" data-i18n-attrs="aria-label:hero.ctaSecondaryAria">See live case</a>
+                    </div>
+                </div>
+                <div class="hero__media reveal-on-scroll">
+                    <figure class="hero__media-card">
+                        <img src="./images/hero.png" alt="FoodChain dashboard showing verified seals and blockchain traceability" loading="lazy" data-i18n-attrs="alt:hero.imageAlt">
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section class="problem-solution" id="problema-solucion">
+            <div class="problem-solution__inner">
+                <div class="problem-solution__problem">
+                    <div class="problem-solution__problem-heading">
+                        <h2 data-i18n="problem.title">The problem</h2>
+                        <p class="problem-solution__subtitle" data-i18n="problem.subtitle">The food industry faces risks in traceability, safety, and regulatory compliance. Lack of transparency creates distrust and hinders crisis management.</p>
+                    </div>
+                    <ul class="problem-solution__list" role="list">
+                        <li data-i18n="problem.item1">Food fraud</li>
+                        <li data-i18n="problem.item2">Product recalls</li>
+                        <li data-i18n="problem.item3">Counterfeitable labels</li>
+                        <li data-i18n="problem.item4">Fragmented data</li>
+                    </ul>
+                </div>
+                <div class="problem-solution__solution">
+                    <h3 data-i18n="solution.title">Our solution</h3>
+                    <p data-i18n="solution.description">FoodChain records every step of the chain with verifiable real-time evidence. With blockchain we guarantee immutability, and with a signed QR we prevent fraud, delivering fast and reliable audits.</p>
+                    <div class="solutions-grid">
+                        <article class="solution-card" tabindex="0">
+                            <figure class="solution-card__figure">
+                                    <img src="./images/hero.svg" alt="Network of interconnected blockchain nodes" loading="lazy" data-i18n-attrs="alt:solution.card1.alt">
+                                <figcaption class="solution-card__caption">
+                                    <h4 data-i18n="solution.card1.title">Blockchain/Immutability</h4>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="solution-card" tabindex="0">
+                            <figure class="solution-card__figure">
+                                    <img src="./images/trust1.svg" alt="Secure QR code printed on packaging" loading="lazy" data-i18n-attrs="alt:solution.card2.alt">
+                                <figcaption class="solution-card__caption">
+                                    <h4 data-i18n="solution.card2.title">QR per batch</h4>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="solution-card" tabindex="0">
+                            <figure class="solution-card__figure">
+                                    <img src="./images/trust2.svg" alt="Person verifying product data from a mobile device" loading="lazy" data-i18n-attrs="alt:solution.card3.alt">
+                                <figcaption class="solution-card__caption">
+                                    <h4 data-i18n="solution.card3.title">Public verification</h4>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="solution-card" tabindex="0">
+                            <figure class="solution-card__figure">
+                                    <img src="./images/trust3.svg" alt="Digital audit dashboard with metrics" loading="lazy" data-i18n-attrs="alt:solution.card4.alt">
+                                <figcaption class="solution-card__caption">
+                                    <h4 data-i18n="solution.card4.title">Fast auditing</h4>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+                <div class="problem-solution__kpis">
+                    <div class="kpi-grid">
+                        <article class="kpi-card" tabindex="0">
+                            <p class="kpi-card__value">+1000</p>
+                            <p class="kpi-card__label" data-i18n="kpis.card1">Companies</p>
+                        </article>
+                        <article class="kpi-card" tabindex="0">
+                            <p class="kpi-card__value">50%</p>
+                            <p class="kpi-card__label" data-i18n="kpis.card2">Reduction in incidents</p>
+                        </article>
+                        <article class="kpi-card" tabindex="0">
+                            <p class="kpi-card__value">99.9%</p>
+                            <p class="kpi-card__label" data-i18n="kpis.card3">Availability</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="chain-stages" id="etapas-cadena">
+            <div class="chain-stages__inner">
+                <h2 class="chain-stages__title" data-i18n="stages.title">Supply chain stages</h2>
+                <div class="chain-stages__grid">
+                    <article class="chain-stage-card" tabindex="0">
+                        <figure class="chain-stage-card__media">
+                            <img src="./images/trust-1.jpg" alt="Farmer recording crop data at a farm" loading="lazy" data-i18n-attrs="alt:stages.card1.alt">
+                        </figure>
+                        <div class="chain-stage-card__content">
+                            <h3 data-i18n="stages.card1.title">Origin</h3>
+                            <p data-i18n="stages.card1.description">Capture data at the farm or producer.</p>
+                        </div>
+                    </article>
+                    <article class="chain-stage-card" tabindex="0">
+                        <figure class="chain-stage-card__media">
+                            <img src="./images/trust-2.jpg" alt="Food processing line under supervision" loading="lazy" data-i18n-attrs="alt:stages.card2.alt">
+                        </figure>
+                        <div class="chain-stage-card__content">
+                            <h3 data-i18n="stages.card2.title">Processing</h3>
+                            <p data-i18n="stages.card2.description">Monitor transformation in real time.</p>
+                        </div>
+                    </article>
+                    <article class="chain-stage-card" tabindex="0">
+                        <figure class="chain-stage-card__media">
+                            <img src="./images/trust-3.jpg" alt="Temperature-monitored distribution truck" loading="lazy" data-i18n-attrs="alt:stages.card3.alt">
+                        </figure>
+                        <div class="chain-stage-card__content">
+                            <h3 data-i18n="stages.card3.title">Distribution</h3>
+                            <p data-i18n="stages.card3.description">Control logistics and the cold chain.</p>
+                        </div>
+                    </article>
+                    <article class="chain-stage-card" tabindex="0">
+                        <figure class="chain-stage-card__media">
+                            <img src="./images/trust-4.jpg" alt="Customer reviewing product information in store" loading="lazy" data-i18n-attrs="alt:stages.card4.alt">
+                        </figure>
+                        <div class="chain-stage-card__content">
+                            <h3 data-i18n="stages.card4.title">Retail</h3>
+                            <p data-i18n="stages.card4.description">Share product information with consumers.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="trust-band" id="confian">
+            <div class="trust-band__inner">
+                <h2 data-i18n="trust.title">Trusted by industry leaders</h2>
+                <div class="trust-band__grid">
+                    <figure class="testimonial-card" tabindex="0">
+                        <img src="./images/trust-5.jpg" alt="Portrait of a quality director" loading="lazy" data-i18n-attrs="alt:trust.testimonial1.alt">
+                        <blockquote data-i18n="trust.testimonial1.quote">“With FoodChain we trace every batch in minutes and audit without disruption.”</blockquote>
+                        <cite data-i18n="trust.testimonial1.cite">Ana García — Quality Director</cite>
+                    </figure>
+                    <figure class="testimonial-card" tabindex="0">
+                        <img src="./images/trust-2.jpg" alt="Portrait of an operations manager" loading="lazy" data-i18n-attrs="alt:trust.testimonial2.alt">
+                        <blockquote data-i18n="trust.testimonial2.quote">“The transparency we give distributors and customers elevated our reputation.”</blockquote>
+                        <cite data-i18n="trust.testimonial2.cite">Carlos Rodríguez — Operations Manager</cite>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section class="benefits-band" id="beneficios">
+            <div class="benefits-band__inner">
+                <h2 data-i18n="benefits.title">Key benefits</h2>
+                <div class="benefits-grid">
+                    <article class="benefit-card" tabindex="0">
+                        <span class="benefit-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"></path><path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"></path></svg>
+                        </span>
+                        <div class="benefit-card__content">
+                            <h3 data-i18n="benefits.card1.title">Total transparency</h3>
+                            <p data-i18n="benefits.card1.description">Access detailed information at every stage of the chain.</p>
+                        </div>
+                    </article>
+                    <article class="benefit-card" tabindex="0">
+                        <span class="benefit-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M12 8v4"></path><path d="M12 14h0"></path></svg>
+                        </span>
+                        <div class="benefit-card__content">
+                            <h3 data-i18n="benefits.card2.title">Regulatory compliance</h3>
+                            <p data-i18n="benefits.card2.description">Stay aligned with local and international regulations.</p>
+                        </div>
+                    </article>
+                    <article class="benefit-card" tabindex="0">
+                        <span class="benefit-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h2l1 5h12l1-5h2"></path><path d="M5 9h14l3 4H2z"></path><path d="M7 9V7a5 5 0 0 1 10 0v2"></path></svg>
+                        </span>
+                        <div class="benefit-card__content">
+                            <h3 data-i18n="benefits.card3.title">Risk reduction</h3>
+                            <p data-i18n="benefits.card3.description">Quickly identify deviations and affected batches.</p>
+                        </div>
+                    </article>
+                    <article class="benefit-card" tabindex="0">
+                        <span class="benefit-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle><path d="M17 3h4v4"></path><path d="M17 7l4-4"></path></svg>
+                        </span>
+                        <div class="benefit-card__content">
+                            <h3 data-i18n="benefits.card4.title">Consumer trust</h3>
+                            <p data-i18n="benefits.card4.description">Offer verifiable information for every purchase.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="target-segments" id="segmentos">
+            <div class="target-segments__inner">
+                <h2 data-i18n="segments.title">Target segments</h2>
+                <div class="segments-tabs" role="tablist" aria-label="Target segments" data-i18n-attrs="aria-label:segments.ariaLabel">
+                    <button class="segments-tab" role="tab" id="segment-tab-productores" aria-selected="true" aria-controls="segment-panel-productores" tabindex="0" data-i18n="segments.tabs.producers">Producers</button>
+                    <button class="segments-tab" role="tab" id="segment-tab-empresas" aria-selected="false" aria-controls="segment-panel-empresas" tabindex="-1" data-i18n="segments.tabs.enterprises">Enterprises/Retailers</button>
+                    <button class="segments-tab" role="tab" id="segment-tab-consumidores" aria-selected="false" aria-controls="segment-panel-consumidores" tabindex="-1" data-i18n="segments.tabs.consumers">Consumers</button>
+                </div>
+                <div class="segments-panels">
+                    <div class="segments-panel" role="tabpanel" id="segment-panel-productores" aria-labelledby="segment-tab-productores">
+                        <div class="segments-panel__content">
+                            <ul class="segments-panel__bullets" role="list">
+                            <li data-i18n="segments.panels.producers.bullet1">Digital, export-ready certificates of origin.</li>
+                            <li data-i18n="segments.panels.producers.bullet2">Early alerts for sanitary or climate risks.</li>
+                            <li data-i18n="segments.panels.producers.bullet3">Integration with ERPs and in-field sensors.</li>
+                            </ul>
+                            <p class="segments-panel__quote" data-i18n="segments.panels.producers.quote">“We now prove batch traceability without paperwork.”</p>
+                        </div>
+                        <div class="segments-panel__cta">
+                            <a class="btn btn--primary" href="#footer" data-i18n="segments.panels.producers.cta">Contact us</a>
+                        </div>
+                    </div>
+                    <div class="segments-panel" role="tabpanel" id="segment-panel-empresas" aria-labelledby="segment-tab-empresas" hidden>
+                        <div class="segments-panel__content">
+                            <ul class="segments-panel__bullets" role="list">
+                            <li data-i18n="segments.panels.enterprises.bullet1">Unified dashboard for batches, suppliers, and audits.</li>
+                            <li data-i18n="segments.panels.enterprises.bullet2">Automated regulatory and quality reports.</li>
+                            <li data-i18n="segments.panels.enterprises.bullet3">24/7 monitoring SLA with expert support.</li>
+                            </ul>
+                            <p class="segments-panel__quote" data-i18n="segments.panels.enterprises.quote">“We cut each audit down to under an hour.”</p>
+                        </div>
+                        <div class="segments-panel__cta">
+                            <a class="btn btn--outline" href="#footer" data-i18n="segments.panels.enterprises.cta">Talk to sales</a>
+                        </div>
+                    </div>
+                    <div class="segments-panel" role="tabpanel" id="segment-panel-consumidores" aria-labelledby="segment-tab-consumidores" hidden>
+                        <div class="segments-panel__content">
+                            <ul class="segments-panel__bullets" role="list">
+                            <li data-i18n="segments.panels.consumers.bullet1">Instant verification through on-pack QR codes.</li>
+                            <li data-i18n="segments.panels.consumers.bullet2">Transparent nutrition facts and trust seals.</li>
+                            <li data-i18n="segments.panels.consumers.bullet3">Personalized alerts about recalls or batch changes.</li>
+                            </ul>
+                            <p class="segments-panel__quote" data-i18n="segments.panels.consumers.quote">“We trust the brand because we see the entire journey.”</p>
+                        </div>
+                        <div class="segments-panel__cta">
+                            <a class="btn btn--primary" href="#footer" data-i18n="segments.panels.consumers.cta">Contact us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="use-case" id="use-case">
+            <div class="use-case__inner">
+                <h2 data-i18n="useCase.title">Use case</h2>
+                <div class="use-case__timeline" role="list">
+                    <article class="use-case__step" role="listitem" tabindex="0" aria-label="Step 1: Certified origin" data-i18n-attrs="aria-label:useCase.step1.aria">
+                        <span class="use-case__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 11c0-3.5 2.5-6.5 5-7.5 2.5 1 5 4 5 7.5s-2.5 6.5-5 7.5c-2.5-1-5-4-5-7.5Z" />
+                                <path d="M12 6.5v9" />
+                            </svg>
+                        </span>
+                        <div class="use-case__content">
+                            <h3 data-i18n="useCase.step1.title">Certified origin</h3>
+                            <p data-i18n="useCase.step1.description">A coffee producer logs cultivation, harvest, and processing data.</p>
+                        </div>
+                    </article>
+                    <article class="use-case__step" role="listitem" tabindex="0" aria-label="Step 2: Transparent processing" data-i18n-attrs="aria-label:useCase.step2.aria">
+                        <span class="use-case__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3.5" />
+                                <path d="M12 4.5v2.2" />
+                                <path d="M12 17.3v2.2" />
+                                <path d="M6.7 6.7l1.6 1.6" />
+                                <path d="M15.7 15.7l1.6 1.6" />
+                                <path d="M4.5 12h2.2" />
+                                <path d="M17.3 12h2.2" />
+                                <path d="M17.3 6.7l-1.6 1.6" />
+                                <path d="M8.3 15.7l-1.6 1.6" />
+                            </svg>
+                        </span>
+                        <div class="use-case__content">
+                            <h3 data-i18n="useCase.step2.title">Transparent processing</h3>
+                            <p data-i18n="useCase.step2.description">Every transformation stage is recorded with quality checks.</p>
+                        </div>
+                    </article>
+                    <article class="use-case__step" role="listitem" tabindex="0" aria-label="Step 3: Controlled logistics" data-i18n-attrs="aria-label:useCase.step3.aria">
+                        <span class="use-case__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 4a4 4 0 0 1 4 4c0 3.2-4 7.5-4 7.5S8 11.2 8 8a4 4 0 0 1 4-4Z" />
+                                <circle cx="12" cy="8" r="1.5" />
+                                <path d="M7 20a5 5 0 0 1 10 0" />
+                            </svg>
+                        </span>
+                        <div class="use-case__content">
+                            <h3 data-i18n="useCase.step3.title">Controlled logistics</h3>
+                            <p data-i18n="useCase.step3.description">Temperature and location are tracked throughout transport.</p>
+                        </div>
+                    </article>
+                    <article class="use-case__step" role="listitem" tabindex="0" aria-label="Step 4: Informed consumer" data-i18n-attrs="aria-label:useCase.step4.aria">
+                        <span class="use-case__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="3" width="6" height="18" rx="1.8" />
+                                <path d="M11 7h2" />
+                                <path d="M11 17h2" />
+                            </svg>
+                        </span>
+                        <div class="use-case__content">
+                            <h3 data-i18n="useCase.step4.title">Informed consumer</h3>
+                            <p data-i18n="useCase.step4.description">Shoppers scan a QR code to view the product journey end to end.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="featured-features" id="featured-features">
+            <div class="featured-features__inner">
+                <h2 data-i18n="features.title">Featured features</h2>
+                <div class="featured-features__grid">
+                    <article class="featured-card" tabindex="0">
+                        <span class="featured-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="6" height="6" rx="1.2" />
+                                <rect x="3" y="15" width="6" height="6" rx="1.2" />
+                                <rect x="15" y="3" width="6" height="6" rx="1.2" />
+                                <path d="M15 15h3v3" />
+                                <path d="M18 15v6" />
+                            </svg>
+                        </span>
+                        <h3 data-i18n="features.card1.title">QR labeling</h3>
+                        <p data-i18n="features.card1.description">Assign QR labels so stakeholders can access product data instantly.</p>
+                    </article>
+                    <article class="featured-card" tabindex="0">
+                        <span class="featured-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="3" />
+                                <path d="M6 18c1.5-2.5 3.5-4 6-4s4.5 1.5 6 4" />
+                                <path d="M12 11v9" />
+                                <path d="M4 5l4 4" />
+                                <path d="M20 5l-4 4" />
+                            </svg>
+                        </span>
+                        <h3 data-i18n="features.card2.title">GPS &amp; blockchain</h3>
+                        <p data-i18n="features.card2.description">Real-time tracking with immutable blockchain records.</p>
+                    </article>
+                    <article class="featured-card" tabindex="0">
+                        <span class="featured-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 3 5 6v5c0 4 3 7 7 9 4-2 7-5 7-9V6l-7-3Z" />
+                                <path d="M9.5 11.5 12 14l3.5-3.5" />
+                            </svg>
+                        </span>
+                        <h3 data-i18n="features.card3.title">Consumer verification</h3>
+                        <p data-i18n="features.card3.description">Allow consumers to verify authenticity and origin on demand.</p>
+                    </article>
+                    <article class="featured-card" tabindex="0">
+                        <span class="featured-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="16" rx="2" />
+                                <path d="M7 16v-4" />
+                                <path d="M12 16v-6" />
+                                <path d="M17 16v-2" />
+                            </svg>
+                        </span>
+                        <h3 data-i18n="features.card4.title">Analytics dashboard</h3>
+                        <p data-i18n="features.card4.description">Visualize key metrics and trends across your supply chain.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="caracteristicas" id="caracteristicas">
+            <div class="caracteristicas__inner">
+                <h2 data-i18n="capabilities.title">Detailed capabilities</h2>
+                <div class="caracteristicas__chips" role="navigation" aria-label="Capabilities" data-i18n-attrs="aria-label:capabilities.ariaLabel">
+                    <button class="caracteristicas__chip is-active" type="button" data-target="#feature-trazabilidad" aria-controls="feature-trazabilidad" aria-pressed="true" data-i18n="capabilities.chips.traceability">End-to-end traceability</button>
+                    <button class="caracteristicas__chip" type="button" data-target="#feature-alertas" aria-controls="feature-alertas" aria-pressed="false" data-i18n="capabilities.chips.alerts">Real-time alerts</button>
+                    <button class="caracteristicas__chip" type="button" data-target="#feature-integracion" aria-controls="feature-integracion" aria-pressed="false" data-i18n="capabilities.chips.integration">Systems integration</button>
+                    <button class="caracteristicas__chip" type="button" data-target="#feature-reportes" aria-controls="feature-reportes" aria-pressed="false" data-i18n="capabilities.chips.reports">Custom reports</button>
+                    <button class="caracteristicas__chip" type="button" data-target="#feature-api" aria-controls="feature-api" aria-pressed="false" data-i18n="capabilities.chips.api">Open API</button>
+                    <button class="caracteristicas__chip" type="button" data-target="#feature-soporte" aria-controls="feature-soporte" aria-pressed="false" data-i18n="capabilities.chips.support">Technical support</button>
+                </div>
+                <div class="caracteristicas__details">
+                    <article class="caracteristicas__detail" id="feature-trazabilidad" tabindex="-1">
+                        <h3 data-i18n="capabilities.details.traceability.title">End-to-end traceability</h3>
+                        <p data-i18n="capabilities.details.traceability.description">Follow every lot from origin to the final customer with verifiable evidence.</p>
+                    </article>
+                    <article class="caracteristicas__detail" id="feature-alertas" tabindex="-1">
+                        <h3 data-i18n="capabilities.details.alerts.title">Real-time alerts</h3>
+                        <p data-i18n="capabilities.details.alerts.description">Receive instant notifications when thresholds or procedures are breached.</p>
+                    </article>
+                    <article class="caracteristicas__detail" id="feature-integracion" tabindex="-1">
+                        <h3 data-i18n="capabilities.details.integration.title">Systems integration</h3>
+                        <p data-i18n="capabilities.details.integration.description">Connect with ERP, CRM, and sensor networks already in place.</p>
+                    </article>
+                    <article class="caracteristicas__detail" id="feature-reportes" tabindex="-1">
+                        <h3 data-i18n="capabilities.details.reports.title">Custom reports</h3>
+                        <p data-i18n="capabilities.details.reports.description">Generate role-based reports tailored to regulators and partners.</p>
+                    </article>
+                    <article class="caracteristicas__detail" id="feature-api" tabindex="-1">
+                        <h3 data-i18n="capabilities.details.api.title">Open API</h3>
+                        <p data-i18n="capabilities.details.api.description">Use an extensible API for custom apps and workflows.</p>
+                    </article>
+                    <article class="caracteristicas__detail" id="feature-soporte" tabindex="-1">
+                        <h3 data-i18n="capabilities.details.support.title">Technical support</h3>
+                        <p data-i18n="capabilities.details.support.description">Rely on specialists for onboarding, training, and continuous support.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="pricing" id="pricing">
+            <div class="pricing__inner">
+                <h2 class="pricing__title" data-i18n="pricing.title">Plans and pricing</h2>
+                <div class="pricing__grid">
+                    <article class="pricing-card card pricing-card--basic">
+                        <header class="pricing-card__header">
+                            <h3 class="pricing-card__name" data-i18n="pricing.basic.name">Basic</h3>
+                            <p class="pricing-card__price"><span class="pricing-card__amount" data-i18n="pricing.basic.amount">$29</span><span class="pricing-card__period" data-i18n="pricing.basic.period">/month</span></p>
+                        </header>
+                        <ul class="pricing-card__features" role="list">
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.basic.feature1">Basic traceability</span></li>
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.basic.feature2">Up to 1000 products</span></li>
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.basic.feature3">Standard support</span></li>
+                        </ul>
+                        <button type="button" class="pricing-card__cta pricing-card__cta--secondary" data-i18n="pricing.basic.cta">Select</button>
+                    </article>
+                    <article class="pricing-card pricing-card--featured pricing-card--professional card">
+                        <header class="pricing-card__header">
+                            <span class="badge" aria-label="Recommended plan" data-i18n="pricing.featured.badge" data-i18n-attrs="aria-label:pricing.featured.badgeAria">Recommended</span>
+                            <h3 class="pricing-card__name" data-i18n="pricing.featured.name">Professional</h3>
+                            <p class="pricing-card__price"><span class="pricing-card__amount" data-i18n="pricing.featured.amount">$89</span><span class="pricing-card__period" data-i18n="pricing.featured.period">/month</span></p>
+                        </header>
+                        <ul class="pricing-card__features" role="list">
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.featured.feature1">Advanced traceability</span></li>
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.featured.feature2">Up to 10,000 products</span></li>
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.featured.feature3">Custom alerts</span></li>
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.featured.feature4">Priority support</span></li>
+                        </ul>
+                        <button type="button" class="pricing-card__cta pricing-card__cta--primary" data-i18n="pricing.featured.cta">Select</button>
+                    </article>
+                    <article class="pricing-card card pricing-card--enterprise">
+                        <header class="pricing-card__header">
+                            <h3 class="pricing-card__name" data-i18n="pricing.enterprise.name">Enterprise</h3>
+                            <p class="pricing-card__price"><span class="pricing-card__amount" data-i18n="pricing.enterprise.amount">Contact us</span></p>
+                        </header>
+                        <ul class="pricing-card__features" role="list">
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.enterprise.feature1">Complete traceability</span></li>
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.enterprise.feature2">Unlimited products</span></li>
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.enterprise.feature3">Custom integrations</span></li>
+                            <li class="pricing-card__feature"><span class="pricing-card__icon" aria-hidden="true">
+                                <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M6.2 11.1 3.6 8.5 2.4 9.7l3.8 3.8 7.4-7.4-1.2-1.2-6.2 6.2Z" fill="#60a5fa"/></svg>
+                            </span><span data-i18n="pricing.enterprise.feature4">Dedicated support</span></li>
+                        </ul>
+                        <button type="button" class="pricing-card__cta pricing-card__cta--ghost" data-i18n="pricing.enterprise.cta">Contact us</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="contact__inner">
+                <div class="contact__copy" id="promise">
+                    <h2 class="contact__title" data-i18n="contact.title">Let's talk about your traceability</h2>
+                    <p class="contact__description" data-i18n="contact.description">We help you implement auditable records, public verification, and regulator-ready reports. Leave your details and we'll reach out today.</p>
+                </div>
+                <div class="contact__form">
+                    <div class="contact__status contact__status--success" id="contact-status-success" role="status" aria-live="polite" hidden tabindex="-1" data-toast="Request sent. We'll be in touch soon." data-i18n-attrs="data-toast:contact.status.successToast">
+                        <p data-i18n="contact.status.successMessage">Thanks! Your request was sent. We'll contact you within 24 business hours.</p>
+                        <a class="contact__status-cta" href="#featured-features" data-i18n="contact.status.successCta">Schedule demo</a>
+                    </div>
+                    <div class="contact__status contact__status--error" id="contact-status-error" role="alert" aria-live="assertive" hidden tabindex="-1" data-toast="Check the fields and try again." data-i18n-attrs="data-toast:contact.status.errorToast">
+                        <p data-i18n="contact.status.errorMessage">We couldn't process your request. Please try again.</p>
+                    </div>
+                    <form id="contact-form" class="contact__form-card" novalidate>
+                        <div class="contact__field">
+                            <label for="contact-email" data-i18n="contact.form.email.label">Email</label>
+                            <input id="contact-email" name="email" type="email" required autocomplete="email" placeholder="you@company.com" aria-describedby="contact-email-error" data-validate="email" data-error-required="Enter your email address." data-error-invalid="Enter a valid email address." data-i18n-attrs="placeholder:contact.form.email.placeholder,data-error-required:contact.form.email.errorRequired,data-error-invalid:contact.form.email.errorInvalid">
+                            <p class="contact__error" id="contact-email-error" role="status" aria-live="polite" hidden>
+                                <span class="contact__error-icon" aria-hidden="true"></span>
+                                <span class="contact__error-message"></span>
+                            </p>
+                        </div>
+                        <div class="contact__field">
+                            <label for="contact-name" data-i18n="contact.form.name.label">Name</label>
+                            <input id="contact-name" name="name" type="text" required minlength="2" maxlength="80" autocomplete="name" placeholder="Full name" aria-describedby="contact-name-error" data-validate="text" data-error-required="Enter your name." data-error-minlength="Enter at least 2 characters." data-i18n-attrs="placeholder:contact.form.name.placeholder,data-error-required:contact.form.name.errorRequired,data-error-minlength:contact.form.name.errorMin">
+                            <p class="contact__error" id="contact-name-error" role="status" aria-live="polite" hidden>
+                                <span class="contact__error-icon" aria-hidden="true"></span>
+                                <span class="contact__error-message"></span>
+                            </p>
+                        </div>
+                        <div class="contact__field">
+                            <label for="contact-company" data-i18n="contact.form.company.label">Company</label>
+                            <input id="contact-company" name="company" type="text" required minlength="2" maxlength="120" autocomplete="organization" placeholder="Company name" aria-describedby="contact-company-error" data-validate="text" data-error-required="Enter your company name." data-error-minlength="Enter at least 2 characters." data-i18n-attrs="placeholder:contact.form.company.placeholder,data-error-required:contact.form.company.errorRequired,data-error-minlength:contact.form.company.errorMin">
+                            <p class="contact__error" id="contact-company-error" role="status" aria-live="polite" hidden>
+                                <span class="contact__error-icon" aria-hidden="true"></span>
+                                <span class="contact__error-message"></span>
+                            </p>
+                        </div>
+                        <div class="contact__field">
+                            <label for="contact-phone" data-i18n="contact.form.phone.label">Phone</label>
+                            <input id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+1 555 555 5555" aria-describedby="contact-phone-error" data-validate="phone" data-error-invalid="Enter a valid phone number." data-i18n-attrs="placeholder:contact.form.phone.placeholder,data-error-invalid:contact.form.phone.errorInvalid">
+                            <p class="contact__error" id="contact-phone-error" role="status" aria-live="polite" hidden>
+                                <span class="contact__error-icon" aria-hidden="true"></span>
+                                <span class="contact__error-message"></span>
+                            </p>
+                        </div>
+                        <div class="contact__field contact__field--message">
+                            <label for="contact-message" data-i18n="contact.form.message.label">Message</label>
+                            <textarea id="contact-message" name="message" rows="6" required minlength="20" maxlength="600" placeholder="Tell us about your project" aria-describedby="contact-message-error" data-validate="message" data-error-required="Tell us about your project." data-error-minlength="Describe your project in at least 20 characters." data-i18n-attrs="placeholder:contact.form.message.placeholder,data-error-required:contact.form.message.errorRequired,data-error-minlength:contact.form.message.errorMin"></textarea>
+                            <p class="contact__error" id="contact-message-error" role="status" aria-live="polite" hidden>
+                                <span class="contact__error-icon" aria-hidden="true"></span>
+                                <span class="contact__error-message"></span>
+                            </p>
+                        </div>
+                        <div class="contact__field contact__field--captcha">
+                            <label for="contact-captcha" data-i18n="contact.form.captcha.label">Type the code</label>
+                            <div class="contact__captcha">
+                                <span class="contact__captcha-code" id="contact-captcha-code" aria-hidden="true"></span>
+                                <button class="contact__captcha-refresh" type="button" id="contact-captcha-refresh" aria-label="Generate a new code" data-i18n-attrs="aria-label:contact.form.captcha.refresh">
+                                    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v5h5"/><path d="M16 16v-5h-5"/><path d="M5.63 14.37A7 7 0 1 1 14.37 5.63"/></svg>
+                                </button>
+                            </div>
+                            <input id="contact-captcha" name="captcha" type="text" required maxlength="6" autocomplete="off" placeholder="Type the code" aria-describedby="contact-captcha-error" data-validate="captcha" data-error-required="Enter the code shown." data-error-invalid="The code doesn't match." data-i18n-attrs="placeholder:contact.form.captcha.inputPlaceholder,data-error-required:contact.form.captcha.errorRequired,data-error-invalid:contact.form.captcha.errorInvalid">
+                            <p class="contact__error" id="contact-captcha-error" role="status" aria-live="polite" hidden>
+                                <span class="contact__error-icon" aria-hidden="true"></span>
+                                <span class="contact__error-message"></span>
+                            </p>
+                        </div>
+                        <div class="contact__field contact__field--checkbox">
+                            <input id="contact-consent" name="consent" type="checkbox" required aria-describedby="contact-consent-error" data-validate="consent" data-error-required="You must accept the privacy policy." data-i18n-attrs="data-error-required:contact.form.consent.errorRequired">
+                            <label for="contact-consent" data-i18n="contact.form.consent.label" data-i18n-type="html">I've read and accept the <a href="#">Privacy Policy</a>.</label>
+                            <p class="contact__error" id="contact-consent-error" role="status" aria-live="polite" hidden>
+                                <span class="contact__error-icon" aria-hidden="true"></span>
+                                <span class="contact__error-message"></span>
+                            </p>
+                        </div>
+                        <div class="contact__field contact__field--honeypot" aria-hidden="true">
+                            <label for="contact-ref" tabindex="-1">Reference</label>
+                            <input id="contact-ref" name="reference" type="text" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="contact__actions">
+                            <button type="submit" class="contact__submit" aria-label="Send contact form" data-i18n-attrs="aria-label:contact.form.submitAria">
+                                <span class="contact__submit-spinner" aria-hidden="true"></span>
+                                <span class="contact__submit-label" data-i18n="contact.form.submitLabel">Send</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="faq" id="faq">
+            <div class="faq__inner">
+                <h2 class="faq__title" data-i18n="faq.title">Frequently asked questions</h2>
+                <div class="faq__list">
+                    <article class="faq-card">
+                        <h3 class="faq-card__title">
+                            <button class="faq-card__trigger" id="faq-trigger-1" type="button" role="button" aria-expanded="true" aria-controls="faq-panel-1">
+                                <span class="faq-card__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18h.01"/><path d="M10.6 9a1.4 1.4 0 0 1 2.8 0c0 .78-.56 1.22-1.2 1.58-.78.44-1.4.97-1.4 1.92V13"/><circle cx="12" cy="12" r="9"/></svg>
+                                </span>
+                                <span data-i18n="faq.items.one.question">What is FoodChain?</span>
+                                <span class="faq-card__caret" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 4 4 4-4"/></svg>
+                                </span>
+                            </button>
+                        </h3>
+                        <div class="faq-card__panel" id="faq-panel-1" role="region" aria-labelledby="faq-trigger-1">
+                            <p data-i18n="faq.items.one.answer">It digitizes and secures traceability: signed QR codes, blockchain hashes, and public verification.</p>
+                        </div>
+                    </article>
+                    <article class="faq-card">
+                        <h3 class="faq-card__title">
+                            <button class="faq-card__trigger" id="faq-trigger-2" type="button" role="button" aria-expanded="false" aria-controls="faq-panel-2">
+                                <span class="faq-card__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18h.01"/><path d="M10.6 9a1.4 1.4 0 0 1 2.8 0c0 .78-.56 1.22-1.2 1.58-.78.44-1.4.97-1.4 1.92V13"/><circle cx="12" cy="12" r="9"/></svg>
+                                </span>
+                                <span data-i18n="faq.items.two.question">How does the integration work?</span>
+                                <span class="faq-card__caret" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 4 4 4-4"/></svg>
+                                </span>
+                            </button>
+                        </h3>
+                        <div class="faq-card__panel" id="faq-panel-2" role="region" aria-labelledby="faq-trigger-2" hidden>
+                            <p data-i18n="faq.items.two.answer">API and connectors for ERP/CRM. We start with a pilot and role-based onboarding.</p>
+                        </div>
+                    </article>
+                    <article class="faq-card">
+                        <h3 class="faq-card__title">
+                            <button class="faq-card__trigger" id="faq-trigger-3" type="button" role="button" aria-expanded="false" aria-controls="faq-panel-3">
+                                <span class="faq-card__icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 18h.01"/><path d="M10.6 9a1.4 1.4 0 0 1 2.8 0c0 .78-.56 1.22-1.2 1.58-.78.44-1.4.97-1.4 1.92V13"/><circle cx="12" cy="12" r="9"/></svg>
+                                </span>
+                                <span data-i18n="faq.items.three.question">What support do you offer?</span>
+                                <span class="faq-card__caret" aria-hidden="true">
+                                    <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 4 4 4-4"/></svg>
+                                </span>
+                            </button>
+                        </h3>
+                        <div class="faq-card__panel" id="faq-panel-3" role="region" aria-labelledby="faq-trigger-3" hidden>
+                            <p data-i18n="faq.items.three.answer">Onboarding, help desk, and SLA-backed plans.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+    <a class="fab-whatsapp" id="whatsappFab" href="https://wa.me/XXXXXXXXXXX?text=Hello%20FoodChain,%20I%20want%20a%20demo" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-i18n-attrs="aria-label:whatsapp.ariaLabel,href:whatsapp.href">
+        <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9.383 3 4 8.383 4 15c0 2.53.742 4.89 2.027 6.865L4 29l7.354-1.99C12.869 27.637 14.386 28 16 28c6.617 0 12-5.383 12-12S22.617 3 16 3zm0 22c-1.387 0-2.734-.363-3.91-1.051l-.281-.166-4.359 1.18 1.166-4.257-.184-.292A8.94 8.94 0 0 1 7 15c0-4.963 4.037-9 9-9s9 4.037 9 9-4.037 9-9 9zm4.758-6.637c-.26-.13-1.535-.758-1.77-.844-.237-.09-.41-.13-.582.13-.176.26-.67.844-.82 1.02-.15.176-.303.195-.563.065-.26-.13-1.098-.404-2.094-1.293-.774-.69-1.297-1.543-1.45-1.803-.15-.26-.016-.4.114-.53.116-.116.26-.303.39-.454.13-.15.173-.26.26-.433.086-.173.043-.325-.022-.454-.065-.13-.582-1.406-.799-1.93-.21-.507-.424-.438-.582-.446-.15-.008-.325-.01-.5-.01s-.455.065-.695.325c-.237.26-.91.887-.91 2.164 0 1.277.933 2.51 1.063 2.688.13.173 1.836 2.805 4.45 3.93.622.268 1.107.428 1.486.55.625.198 1.195.17 1.647.103.502-.075 1.535-.627 1.754-1.233.22-.606.22-1.125.154-1.233-.065-.108-.237-.173-.497-.303z"/></svg>
+    </a>
+
+    <footer class="footer" id="footer">
+        <div class="footer__inner">
+            <div class="footer__grid">
+                <div class="footer__column footer__column--brand">
+                    <a class="footer__brand" href="#inicio" aria-label="Back to start" data-i18n-attrs="aria-label:footer.brand.ariaLabel">
+                        <span class="footer__brand-icon" aria-hidden="true">
+                            <img src="./images/leaf.svg" alt="" loading="lazy">
+                        </span>
+                        <span class="footer__brand-name" data-i18n="global.brand">FoodChain</span>
+                    </a>
+                    <p class="footer__brand-description" data-i18n="footer.description">Verifiable trust and auditable traceability for every lot.</p>
+                    <div class="footer__social" aria-label="Social media" data-i18n-attrs="aria-label:footer.social">
+                        <a class="footer__social-link" href="#" aria-label="Twitter" data-i18n-attrs="aria-label:footer.socialTwitter">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3l-4 7-2 4-5 3 5-1 4 7h3l2-4 5-3-5 1-4-7z"/></svg>
+                        </a>
+                        <a class="footer__social-link" href="#" aria-label="LinkedIn" data-i18n-attrs="aria-label:footer.socialLinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__heading" data-i18n="footer.product.heading">Product</h3>
+                    <ul class="footer__list">
+                        <li><a href="#inicio" data-i18n="footer.product.home">Home</a></li>
+                        <li><a href="#problema-solucion" data-i18n="footer.product.solution">Solution</a></li>
+                        <li><a href="#pricing" data-i18n="footer.product.pricing">Pricing</a></li>
+                        <li><a href="#contact" data-i18n="footer.product.demo">Demo</a></li>
+                        <li><a href="#segmentos" data-i18n="footer.product.cases">Cases</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__heading" data-i18n="footer.resources.heading">Resources</h3>
+                    <ul class="footer__list">
+                        <li><a href="#" data-i18n="footer.resources.blog">Blog</a></li>
+                        <li><a href="#" data-i18n="footer.resources.docs">Docs</a></li>
+                        <li><a href="#faq" data-i18n="footer.resources.help">Help center</a></li>
+                    </ul>
+                </div>
+                <div class="footer__column">
+                    <h3 class="footer__heading" data-i18n="footer.legal.heading">Legal</h3>
+                    <ul class="footer__list">
+                        <li><a href="#" data-i18n="footer.legal.privacy">Privacy</a></li>
+                        <li><a href="#" data-i18n="footer.legal.terms">Terms</a></li>
+                        <li><a href="#" data-i18n="footer.legal.cookies">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copy">© <span id="footer-year"></span> <span data-i18n="footer.copy">FoodChain — All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="./js/script.js"></script>
+</body>
+</html>
