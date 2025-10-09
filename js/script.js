@@ -34,6 +34,783 @@ const DEFAULT_LANGUAGE = 'en';
 const SUPPORTED_LANGUAGES = ['en', 'es'];
 const translationsCache = new Map();
 
+const dictionaries = {
+  en: {
+    "global": {
+      "brand": "FoodChain"
+    },
+    "header": {
+      "brand": {
+        "ariaLabel": "Back to start"
+      },
+      "nav": {
+        "ariaLabel": "Main navigation",
+        "home": "Home",
+        "solution": "Solution",
+        "stages": "Stages",
+        "benefits": "Benefits",
+        "segments": "Segments",
+        "contact": "Contact"
+      },
+      "cta": {
+        "primary": "Try demo",
+        "secondary": "Sign in"
+      },
+      "themeToggle": "Toggle theme",
+      "language": {
+        "group": "Language",
+        "en": "EN",
+        "enAria": "Switch to English",
+        "es": "ES",
+        "esAria": "Switch to Spanish"
+      },
+      "menuToggle": {
+        "aria": "Open menu",
+        "open": "Open menu",
+        "close": "Close menu"
+      }
+    },
+    "hero": {
+      "title": "Build trust at every stage of your food chain with verified seals in minutes",
+      "description": "Validate batches with a signed QR, operate with ready-made audits on a public blockchain, and share verifiable evidence with customers and authorities.",
+      "bullet1": "Certificates ready in 48 hours",
+      "bullet2": "Immediate alerts for deviations",
+      "bullet3": "Audits without spreadsheets",
+      "ctaPrimary": "Explore platform",
+      "ctaPrimaryAria": "Open the FoodChain guided tour",
+      "ctaSecondary": "See live case",
+      "ctaSecondaryAria": "See a live case of FoodChain",
+      "imageAlt": "FoodChain dashboard showing verified seals and blockchain traceability"
+    },
+    "problem": {
+      "title": "The problem",
+      "subtitle": "The food industry faces risks in traceability, safety, and regulatory compliance. Lack of transparency creates distrust and hinders crisis management.",
+      "item1": "Food fraud",
+      "item2": "Product recalls",
+      "item3": "Counterfeitable labels",
+      "item4": "Fragmented data"
+    },
+    "solution": {
+      "title": "Our solution",
+      "description": "FoodChain records every step of the chain with verifiable real-time evidence. With blockchain we guarantee immutability, and with a signed QR we prevent fraud, delivering fast and reliable audits.",
+      "card1": {
+        "title": "Blockchain/Immutability",
+        "alt": "Network of interconnected blockchain nodes"
+      },
+      "card2": {
+        "title": "QR per batch",
+        "alt": "Secure QR code printed on packaging"
+      },
+      "card3": {
+        "title": "Public verification",
+        "alt": "Person verifying product data from a mobile device"
+      },
+      "card4": {
+        "title": "Fast auditing",
+        "alt": "Digital audit dashboard with metrics"
+      }
+    },
+    "kpis": {
+      "card1": "Companies",
+      "card2": "Reduction in incidents",
+      "card3": "Availability"
+    },
+    "stages": {
+      "title": "Supply chain stages",
+      "card1": {
+        "title": "Origin",
+        "description": "Capture data at the farm or producer.",
+        "alt": "Farmer recording crop data at a farm"
+      },
+      "card2": {
+        "title": "Processing",
+        "description": "Monitor transformation in real time.",
+        "alt": "Food processing line under supervision"
+      },
+      "card3": {
+        "title": "Distribution",
+        "description": "Control logistics and the cold chain.",
+        "alt": "Temperature-monitored distribution truck"
+      },
+      "card4": {
+        "title": "Retail",
+        "description": "Share product information with consumers.",
+        "alt": "Customer reviewing product information in store"
+      }
+    },
+    "trust": {
+      "title": "Trusted by industry leaders",
+      "testimonial1": {
+        "quote": "“With FoodChain we trace every batch in minutes and audit without disruption.”",
+        "cite": "Ana García — Quality Director",
+        "alt": "Portrait of a quality director"
+      },
+      "testimonial2": {
+        "quote": "“The transparency we give distributors and customers elevated our reputation.”",
+        "cite": "Carlos Rodríguez — Operations Manager",
+        "alt": "Portrait of an operations manager"
+      }
+    },
+    "benefits": {
+      "title": "Key benefits",
+      "card1": {
+        "title": "Total transparency",
+        "description": "Access detailed information at every stage of the chain."
+      },
+      "card2": {
+        "title": "Regulatory compliance",
+        "description": "Stay aligned with local and international regulations."
+      },
+      "card3": {
+        "title": "Risk reduction",
+        "description": "Quickly identify deviations and affected batches."
+      },
+      "card4": {
+        "title": "Consumer trust",
+        "description": "Offer verifiable information for every purchase."
+      }
+    },
+    "segments": {
+      "title": "Target segments",
+      "ariaLabel": "Target segments",
+      "tabs": {
+        "producers": "Producers",
+        "enterprises": "Enterprises/Retailers",
+        "consumers": "Consumers"
+      },
+      "panels": {
+        "producers": {
+          "bullet1": "Digital, export-ready certificates of origin.",
+          "bullet2": "Early alerts for sanitary or climate risks.",
+          "bullet3": "Integration with ERPs and in-field sensors.",
+          "quote": "“We now prove batch traceability without paperwork.”",
+          "cta": "Contact us"
+        },
+        "enterprises": {
+          "bullet1": "Unified dashboard for batches, suppliers, and audits.",
+          "bullet2": "Automated regulatory and quality reports.",
+          "bullet3": "24/7 monitoring SLA with expert support.",
+          "quote": "“We cut each audit down to under an hour.”",
+          "cta": "Talk to sales"
+        },
+        "consumers": {
+          "bullet1": "Instant verification through on-pack QR codes.",
+          "bullet2": "Transparent nutrition facts and trust seals.",
+          "bullet3": "Personalized alerts about recalls or batch changes.",
+          "quote": "“We trust the brand because we see the entire journey.”",
+          "cta": "Contact us"
+        }
+      }
+    },
+    "useCase": {
+      "title": "Use case",
+      "step1": {
+        "aria": "Step 1: Certified origin",
+        "title": "Certified origin",
+        "description": "A coffee producer logs cultivation, harvest, and processing data."
+      },
+      "step2": {
+        "aria": "Step 2: Transparent processing",
+        "title": "Transparent processing",
+        "description": "Every transformation stage is recorded with quality checks."
+      },
+      "step3": {
+        "aria": "Step 3: Controlled logistics",
+        "title": "Controlled logistics",
+        "description": "Temperature and location are tracked throughout transport."
+      },
+      "step4": {
+        "aria": "Step 4: Informed consumer",
+        "title": "Informed consumer",
+        "description": "Shoppers scan a QR code to view the product journey end to end."
+      }
+    },
+    "features": {
+      "title": "Featured features",
+      "card1": {
+        "title": "QR labeling",
+        "description": "Assign QR labels so stakeholders can access product data instantly."
+      },
+      "card2": {
+        "title": "GPS & blockchain",
+        "description": "Real-time tracking with immutable blockchain records."
+      },
+      "card3": {
+        "title": "Consumer verification",
+        "description": "Allow consumers to verify authenticity and origin on demand."
+      },
+      "card4": {
+        "title": "Analytics dashboard",
+        "description": "Visualize key metrics and trends across your supply chain."
+      }
+    },
+    "capabilities": {
+      "title": "Detailed capabilities",
+      "ariaLabel": "Capabilities",
+      "chips": {
+        "traceability": "End-to-end traceability",
+        "alerts": "Real-time alerts",
+        "integration": "Systems integration",
+        "reports": "Custom reports",
+        "api": "Open API",
+        "support": "Technical support"
+      },
+      "details": {
+        "traceability": {
+          "title": "End-to-end traceability",
+          "description": "Follow every lot from origin to the final customer with verifiable evidence."
+        },
+        "alerts": {
+          "title": "Real-time alerts",
+          "description": "Receive instant notifications when thresholds or procedures are breached."
+        },
+        "integration": {
+          "title": "Systems integration",
+          "description": "Connect with ERP, CRM, and sensor networks already in place."
+        },
+        "reports": {
+          "title": "Custom reports",
+          "description": "Generate role-based reports tailored to regulators and partners."
+        },
+        "api": {
+          "title": "Open API",
+          "description": "Use an extensible API for custom apps and workflows."
+        },
+        "support": {
+          "title": "Technical support",
+          "description": "Rely on specialists for onboarding, training, and continuous support."
+        }
+      }
+    },
+    "pricing": {
+      "title": "Plans and pricing",
+      "basic": {
+        "name": "Basic",
+        "amount": "$29",
+        "period": "/month",
+        "feature1": "Basic traceability",
+        "feature2": "Up to 1000 products",
+        "feature3": "Standard support",
+        "cta": "Select"
+      },
+      "featured": {
+        "badge": "Recommended",
+        "badgeAria": "Recommended plan",
+        "name": "Professional",
+        "amount": "$89",
+        "period": "/month",
+        "feature1": "Advanced traceability",
+        "feature2": "Up to 10,000 products",
+        "feature3": "Custom alerts",
+        "feature4": "Priority support",
+        "cta": "Select"
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "amount": "Contact us",
+        "feature1": "Complete traceability",
+        "feature2": "Unlimited products",
+        "feature3": "Custom integrations",
+        "feature4": "Dedicated support",
+        "cta": "Contact us"
+      }
+    },
+    "contact": {
+      "title": "Let's talk about your traceability",
+      "description": "We help you implement auditable records, public verification, and regulator-ready reports. Leave your details and we'll reach out today.",
+      "status": {
+        "successToast": "Request sent. We'll be in touch soon.",
+        "successMessage": "Thanks! Your request was sent. We'll contact you within 24 business hours.",
+        "successCta": "Schedule demo",
+        "errorToast": "Check the fields and try again.",
+        "errorMessage": "We couldn't process your request. Please try again."
+      },
+      "form": {
+        "email": {
+          "label": "Email",
+          "placeholder": "you@company.com",
+          "errorRequired": "Enter your email address.",
+          "errorInvalid": "Enter a valid email address."
+        },
+        "name": {
+          "label": "Name",
+          "placeholder": "Full name",
+          "errorRequired": "Enter your name.",
+          "errorMin": "Enter at least 2 characters."
+        },
+        "company": {
+          "label": "Company",
+          "placeholder": "Company name",
+          "errorRequired": "Enter your company name.",
+          "errorMin": "Enter at least 2 characters."
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "+1 555 555 5555",
+          "errorInvalid": "Enter a valid phone number."
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Tell us about your project",
+          "errorRequired": "Tell us about your project.",
+          "errorMin": "Describe your project in at least 20 characters."
+        },
+        "captcha": {
+          "label": "Type the code",
+          "refresh": "Generate a new code",
+          "inputPlaceholder": "Type the code",
+          "errorRequired": "Enter the code shown.",
+          "errorInvalid": "The code doesn't match."
+        },
+        "consent": {
+          "errorRequired": "You must accept the privacy policy.",
+          "label": "I've read and accept the <a href=\"#\">Privacy Policy</a>."
+        },
+        "submitAria": "Send contact form",
+        "submitLabel": "Send"
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": {
+        "one": {
+          "question": "What is FoodChain?",
+          "answer": "It digitizes and secures traceability: signed QR codes, blockchain hashes, and public verification."
+        },
+        "two": {
+          "question": "How does the integration work?",
+          "answer": "API and connectors for ERP/CRM. We start with a pilot and role-based onboarding."
+        },
+        "three": {
+          "question": "What support do you offer?",
+          "answer": "Onboarding, help desk, and SLA-backed plans."
+        }
+      }
+    },
+    "footer": {
+      "brand": {
+        "ariaLabel": "Back to start"
+      },
+      "description": "Verifiable trust and auditable traceability for every lot.",
+      "social": "Social media",
+      "socialTwitter": "Twitter",
+      "socialLinkedIn": "LinkedIn",
+      "product": {
+        "heading": "Product",
+        "home": "Home",
+        "solution": "Solution",
+        "pricing": "Pricing",
+        "demo": "Demo",
+        "cases": "Cases"
+      },
+      "resources": {
+        "heading": "Resources",
+        "blog": "Blog",
+        "docs": "Docs",
+        "help": "Help center"
+      },
+      "legal": {
+        "heading": "Legal",
+        "privacy": "Privacy",
+        "terms": "Terms",
+        "cookies": "Cookies"
+      },
+      "copy": "FoodChain — All rights reserved."
+    },
+    "whatsapp": {
+      "ariaLabel": "Chat on WhatsApp",
+      "href": "https://wa.me/XXXXXXXXXXX?text=Hello%20FoodChain,%20I%20want%20a%20demo"
+    }
+  },
+  es: {
+    "global": {
+      "brand": "FoodChain"
+    },
+    "header": {
+      "brand": {
+        "ariaLabel": "Volver al inicio"
+      },
+      "nav": {
+        "ariaLabel": "Navegación principal",
+        "home": "Inicio",
+        "solution": "Solución",
+        "stages": "Etapas",
+        "benefits": "Beneficios",
+        "segments": "Segmentos",
+        "contact": "Contacto"
+      },
+      "cta": {
+        "primary": "Probar demo",
+        "secondary": "Iniciar sesión"
+      },
+      "themeToggle": "Cambiar tema",
+      "language": {
+        "group": "Idioma",
+        "en": "EN",
+        "enAria": "Cambiar a inglés",
+        "es": "ES",
+        "esAria": "Cambiar a español"
+      },
+      "menuToggle": {
+        "aria": "Abrir menú",
+        "open": "Abrir menú",
+        "close": "Cerrar menú"
+      }
+    },
+    "hero": {
+      "title": "Genera confianza en cada etapa de tu cadena alimentaria con sellos verificados en minutos",
+      "description": "Valida lotes con un QR firmado, opera auditorías listas en una blockchain pública y comparte evidencia verificable con clientes y autoridades.",
+      "bullet1": "Certificados listos en 48 horas",
+      "bullet2": "Alertas inmediatas ante desviaciones",
+      "bullet3": "Auditorías sin hojas de cálculo",
+      "ctaPrimary": "Explorar plataforma",
+      "ctaPrimaryAria": "Abrir el tour guiado de FoodChain",
+      "ctaSecondary": "Ver caso en vivo",
+      "ctaSecondaryAria": "Ver un caso en vivo de FoodChain",
+      "imageAlt": "Panel de FoodChain con sellos verificados y trazabilidad en blockchain"
+    },
+    "problem": {
+      "title": "El problema",
+      "subtitle": "La industria alimentaria enfrenta riesgos de trazabilidad, inocuidad y cumplimiento normativo. La falta de transparencia genera desconfianza y dificulta la gestión de crisis.",
+      "item1": "Fraude alimentario",
+      "item2": "Retiros de producto",
+      "item3": "Etiquetas falsificables",
+      "item4": "Datos fragmentados"
+    },
+    "solution": {
+      "title": "Nuestra solución",
+      "description": "FoodChain registra cada paso de la cadena con evidencia verificable en tiempo real. Con blockchain garantizamos inmutabilidad y con un QR firmado evitamos el fraude, logrando auditorías rápidas y confiables.",
+      "card1": {
+        "title": "Blockchain/Inmutabilidad",
+        "alt": "Red de nodos blockchain interconectados"
+      },
+      "card2": {
+        "title": "QR por lote",
+        "alt": "Código QR seguro impreso en el empaque"
+      },
+      "card3": {
+        "title": "Verificación pública",
+        "alt": "Persona verificando datos del producto desde un dispositivo móvil"
+      },
+      "card4": {
+        "title": "Auditoría ágil",
+        "alt": "Tablero digital de auditoría con métricas"
+      }
+    },
+    "kpis": {
+      "card1": "Empresas",
+      "card2": "Reducción de incidentes",
+      "card3": "Disponibilidad"
+    },
+    "stages": {
+      "title": "Etapas de la cadena de suministro",
+      "card1": {
+        "title": "Origen",
+        "description": "Captura datos en la granja o productor.",
+        "alt": "Agricultor registrando datos de cultivo en una granja"
+      },
+      "card2": {
+        "title": "Procesamiento",
+        "description": "Monitorea la transformación en tiempo real.",
+        "alt": "Línea de procesamiento de alimentos bajo supervisión"
+      },
+      "card3": {
+        "title": "Distribución",
+        "description": "Controla la logística y la cadena de frío.",
+        "alt": "Camión de distribución con monitoreo de temperatura"
+      },
+      "card4": {
+        "title": "Retail",
+        "description": "Comparte información del producto con los consumidores.",
+        "alt": "Cliente revisando información del producto en la tienda"
+      }
+    },
+    "trust": {
+      "title": "Confiado por líderes de la industria",
+      "testimonial1": {
+        "quote": "“Con FoodChain rastreamos cada lote en minutos y auditamos sin interrupciones.”",
+        "cite": "Ana García — Directora de Calidad",
+        "alt": "Retrato de una directora de calidad"
+      },
+      "testimonial2": {
+        "quote": "“La transparencia que brindamos a distribuidores y clientes elevó nuestra reputación.”",
+        "cite": "Carlos Rodríguez — Gerente de Operaciones",
+        "alt": "Retrato de un gerente de operaciones"
+      }
+    },
+    "benefits": {
+      "title": "Beneficios clave",
+      "card1": {
+        "title": "Transparencia total",
+        "description": "Accede a información detallada en cada etapa de la cadena."
+      },
+      "card2": {
+        "title": "Cumplimiento normativo",
+        "description": "Mantente alineado con regulaciones locales e internacionales."
+      },
+      "card3": {
+        "title": "Reducción de riesgos",
+        "description": "Identifica rápidamente desviaciones y lotes afectados."
+      },
+      "card4": {
+        "title": "Confianza del consumidor",
+        "description": "Ofrece información verificable en cada compra."
+      }
+    },
+    "segments": {
+      "title": "Segmentos objetivo",
+      "ariaLabel": "Segmentos objetivo",
+      "tabs": {
+        "producers": "Productores",
+        "enterprises": "Empresas/Retail",
+        "consumers": "Consumidores"
+      },
+      "panels": {
+        "producers": {
+          "bullet1": "Certificados de origen digitales y listos para exportar.",
+          "bullet2": "Alertas tempranas ante riesgos sanitarios o climáticos.",
+          "bullet3": "Integración con ERPs y sensores en campo.",
+          "quote": "“Ahora demostramos la trazabilidad de cada lote sin papeleo.”",
+          "cta": "Contáctanos"
+        },
+        "enterprises": {
+          "bullet1": "Tablero unificado para lotes, proveedores y auditorías.",
+          "bullet2": "Reportes regulatorios y de calidad automatizados.",
+          "bullet3": "SLA de monitoreo 24/7 con soporte experto.",
+          "quote": "“Reducimos cada auditoría a menos de una hora.”",
+          "cta": "Hablar con ventas"
+        },
+        "consumers": {
+          "bullet1": "Verificación instantánea mediante códigos QR en el empaque.",
+          "bullet2": "Sellos de confianza y nutrición transparentes.",
+          "bullet3": "Alertas personalizadas sobre retiros o cambios de lote.",
+          "quote": "“Confiamos en la marca porque vemos todo el recorrido.”",
+          "cta": "Contáctanos"
+        }
+      }
+    },
+    "useCase": {
+      "title": "Caso de uso",
+      "step1": {
+        "aria": "Paso 1: Origen certificado",
+        "title": "Origen certificado",
+        "description": "Un productor de café registra datos de cultivo, cosecha y procesamiento."
+      },
+      "step2": {
+        "aria": "Paso 2: Procesamiento transparente",
+        "title": "Procesamiento transparente",
+        "description": "Cada etapa de transformación se registra con controles de calidad."
+      },
+      "step3": {
+        "aria": "Paso 3: Logística controlada",
+        "title": "Logística controlada",
+        "description": "Se monitorea temperatura y ubicación durante todo el transporte."
+      },
+      "step4": {
+        "aria": "Paso 4: Consumidor informado",
+        "title": "Consumidor informado",
+        "description": "Los compradores escanean un QR para ver el recorrido completo del producto."
+      }
+    },
+    "features": {
+      "title": "Funcionalidades destacadas",
+      "card1": {
+        "title": "Etiquetado QR",
+        "description": "Asigna etiquetas QR para que los actores accedan a los datos al instante."
+      },
+      "card2": {
+        "title": "GPS y blockchain",
+        "description": "Seguimiento en tiempo real con registros inmutables en blockchain."
+      },
+      "card3": {
+        "title": "Verificación del consumidor",
+        "description": "Permite que los consumidores verifiquen autenticidad y origen al instante."
+      },
+      "card4": {
+        "title": "Panel analítico",
+        "description": "Visualiza métricas y tendencias de toda tu cadena de suministro."
+      }
+    },
+    "capabilities": {
+      "title": "Capacidades detalladas",
+      "ariaLabel": "Capacidades",
+      "chips": {
+        "traceability": "Trazabilidad extremo a extremo",
+        "alerts": "Alertas en tiempo real",
+        "integration": "Integración de sistemas",
+        "reports": "Reportes personalizados",
+        "api": "API abierta",
+        "support": "Soporte técnico"
+      },
+      "details": {
+        "traceability": {
+          "title": "Trazabilidad extremo a extremo",
+          "description": "Sigue cada lote desde el origen hasta el cliente final con evidencia verificable."
+        },
+        "alerts": {
+          "title": "Alertas en tiempo real",
+          "description": "Recibe notificaciones instantáneas cuando se incumplen umbrales o procedimientos."
+        },
+        "integration": {
+          "title": "Integración de sistemas",
+          "description": "Conecta con tus ERP, CRM y redes de sensores existentes."
+        },
+        "reports": {
+          "title": "Reportes personalizados",
+          "description": "Genera reportes por rol adaptados a reguladores y socios."
+        },
+        "api": {
+          "title": "API abierta",
+          "description": "Usa una API extensible para aplicaciones y flujos personalizados."
+        },
+        "support": {
+          "title": "Soporte técnico",
+          "description": "Cuenta con especialistas para onboarding, capacitación y soporte continuo."
+        }
+      }
+    },
+    "pricing": {
+      "title": "Planes y precios",
+      "basic": {
+        "name": "Básico",
+        "amount": "$29",
+        "period": "/mes",
+        "feature1": "Trazabilidad básica",
+        "feature2": "Hasta 1000 productos",
+        "feature3": "Soporte estándar",
+        "cta": "Seleccionar"
+      },
+      "featured": {
+        "badge": "Recomendado",
+        "badgeAria": "Plan recomendado",
+        "name": "Profesional",
+        "amount": "$89",
+        "period": "/mes",
+        "feature1": "Trazabilidad avanzada",
+        "feature2": "Hasta 10,000 productos",
+        "feature3": "Alertas personalizadas",
+        "feature4": "Soporte prioritario",
+        "cta": "Seleccionar"
+      },
+      "enterprise": {
+        "name": "Empresarial",
+        "amount": "Contáctanos",
+        "feature1": "Trazabilidad completa",
+        "feature2": "Productos ilimitados",
+        "feature3": "Integraciones a medida",
+        "feature4": "Soporte dedicado",
+        "cta": "Contáctanos"
+      }
+    },
+    "contact": {
+      "title": "Hablemos de tu trazabilidad",
+      "description": "Te ayudamos a implementar registros auditables, verificación pública y reportes listos para reguladores. Déjanos tus datos y te contactaremos hoy.",
+      "status": {
+        "successToast": "Solicitud enviada. Nos pondremos en contacto pronto.",
+        "successMessage": "¡Gracias! Recibimos tu solicitud. Te contactaremos dentro de 24 horas hábiles.",
+        "successCta": "Agendar demo",
+        "errorToast": "Revisa los campos e inténtalo nuevamente.",
+        "errorMessage": "No pudimos procesar tu solicitud. Vuelve a intentarlo."
+      },
+      "form": {
+        "email": {
+          "label": "Correo electrónico",
+          "placeholder": "tu@empresa.com",
+          "errorRequired": "Ingresa tu correo electrónico.",
+          "errorInvalid": "Ingresa un correo válido."
+        },
+        "name": {
+          "label": "Nombre",
+          "placeholder": "Nombre completo",
+          "errorRequired": "Ingresa tu nombre.",
+          "errorMin": "Escribe al menos 2 caracteres."
+        },
+        "company": {
+          "label": "Compañía",
+          "placeholder": "Nombre de la compañía",
+          "errorRequired": "Ingresa el nombre de tu compañía.",
+          "errorMin": "Escribe al menos 2 caracteres."
+        },
+        "phone": {
+          "label": "Teléfono",
+          "placeholder": "+34 600 000 000",
+          "errorInvalid": "Ingresa un teléfono válido."
+        },
+        "message": {
+          "label": "Mensaje",
+          "placeholder": "Cuéntanos sobre tu proyecto",
+          "errorRequired": "Cuéntanos sobre tu proyecto.",
+          "errorMin": "Describe tu proyecto en al menos 20 caracteres."
+        },
+        "captcha": {
+          "label": "Escribe el código",
+          "refresh": "Generar un nuevo código",
+          "inputPlaceholder": "Escribe el código",
+          "errorRequired": "Ingresa el código mostrado.",
+          "errorInvalid": "El código no coincide."
+        },
+        "consent": {
+          "errorRequired": "Debes aceptar la política de privacidad.",
+          "label": "He leído y acepto la <a href=\"#\">Política de Privacidad</a>."
+        },
+        "submitAria": "Enviar formulario de contacto",
+        "submitLabel": "Enviar"
+      }
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "items": {
+        "one": {
+          "question": "¿Qué es FoodChain?",
+          "answer": "Digitaliza y asegura la trazabilidad: códigos QR firmados, hashes en blockchain y verificación pública."
+        },
+        "two": {
+          "question": "¿Cómo funciona la integración?",
+          "answer": "API y conectores para ERP/CRM. Iniciamos con un piloto y onboarding por roles."
+        },
+        "three": {
+          "question": "¿Qué soporte ofrecen?",
+          "answer": "Onboarding, mesa de ayuda y planes con SLA."
+        }
+      }
+    },
+    "footer": {
+      "brand": {
+        "ariaLabel": "Volver al inicio"
+      },
+      "description": "Confianza verificable y trazabilidad auditable para cada lote.",
+      "social": "Redes sociales",
+      "socialTwitter": "Twitter",
+      "socialLinkedIn": "LinkedIn",
+      "product": {
+        "heading": "Producto",
+        "home": "Inicio",
+        "solution": "Solución",
+        "pricing": "Precios",
+        "demo": "Demo",
+        "cases": "Casos"
+      },
+      "resources": {
+        "heading": "Recursos",
+        "blog": "Blog",
+        "docs": "Documentación",
+        "help": "Centro de ayuda"
+      },
+      "legal": {
+        "heading": "Legal",
+        "privacy": "Privacidad",
+        "terms": "Términos",
+        "cookies": "Cookies"
+      },
+      "copy": "FoodChain — Todos los derechos reservados."
+    },
+    "whatsapp": {
+      "ariaLabel": "Chatear por WhatsApp",
+      "href": "https://wa.me/XXXXXXXXXXX?text=Hola%20FoodChain,%20quiero%20una%20demo"
+    }
+  }
+};
+
 function normalizeLanguage(value, fallback = DEFAULT_LANGUAGE, supported = SUPPORTED_LANGUAGES) {
     if (typeof value !== 'string' || !value.trim()) {
         return supported.includes(fallback) ? fallback : supported[0];
@@ -119,18 +896,17 @@ function initI18n({ defaultLanguage = DEFAULT_LANGUAGE, supportedLanguages = SUP
         });
     };
 
-    const loadDictionary = async (language) => {
+    const loadDictionary = (language) => {
         const normalized = normalizeLanguage(language, defaultLanguage, supportedLanguages);
         if (translationsCache.has(normalized)) {
             return translationsCache.get(normalized);
         }
-        const response = await fetch(`./i18n/${normalized}.json`, { cache: 'no-store' });
-        if (!response.ok) {
+        const dictionary = dictionaries[normalized];
+        if (!dictionary) {
             throw new Error(`Unable to load translations for ${normalized}`);
         }
-        const data = await response.json();
-        translationsCache.set(normalized, data);
-        return data;
+        translationsCache.set(normalized, dictionary);
+        return dictionary;
     };
 
     const applyLanguage = (language, dictionary, { persist = true, notify = true } = {}) => {
@@ -148,16 +924,16 @@ function initI18n({ defaultLanguage = DEFAULT_LANGUAGE, supportedLanguages = SUP
         return language;
     };
 
-    const setLanguage = async (language, options = {}) => {
+    const setLanguage = (language, options = {}) => {
         const normalized = normalizeLanguage(language, defaultLanguage, supportedLanguages);
         try {
-            const dictionary = await loadDictionary(normalized);
+            const dictionary = loadDictionary(normalized);
             return applyLanguage(normalized, dictionary, options);
         } catch (error) {
             console.warn('Failed to set language', normalized, error);
             if (normalized !== defaultLanguage) {
                 try {
-                    const fallbackDictionary = await loadDictionary(defaultLanguage);
+                    const fallbackDictionary = loadDictionary(defaultLanguage);
                     return applyLanguage(defaultLanguage, fallbackDictionary, options);
                 } catch (fallbackError) {
                     console.error('Failed to load fallback language', fallbackError);
@@ -194,20 +970,11 @@ function initI18n({ defaultLanguage = DEFAULT_LANGUAGE, supportedLanguages = SUP
     setButtonState(currentLanguage);
 
     const initialLanguage = detectLanguage();
-    setLanguage(initialLanguage, { persist: false, notify: false })
-        .then((language) => {
-            resolveReady(language);
-            if (typeof onChange === 'function') {
-                onChange(language);
-            }
-        })
-        .catch((error) => {
-            console.warn('i18n initialization error', error);
-            resolveReady(currentLanguage);
-            if (typeof onChange === 'function') {
-                onChange(currentLanguage);
-            }
-        });
+    const loadedLanguage = setLanguage(initialLanguage, { persist: false, notify: false });
+    resolveReady(loadedLanguage);
+    if (typeof onChange === 'function') {
+        onChange(loadedLanguage);
+    }
 
     return {
         getLanguage: () => currentLanguage,
